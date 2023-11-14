@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="tel"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+button[type="submit"] {
+    background-color: #f9a826;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #f9a826;
+}
+
+a {
+    text-decoration: none;
+    color: #f9a826;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

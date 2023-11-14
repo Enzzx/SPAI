@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Emergência</title>
+    <link rel="stylesheet" type="text/css" href="confirmar-ambu.css">
+</head>
+<body>
+    <h1>Chamada de Emergência Confirmada</h1>
+    <p>A ambulância foi acionada e estará chegando ao destino em:</p>
+    <div id="tempoChegada">Calculando...</div>
+
+    <a href="../index.html">Voltar ao Início</a>
+
+    <script>
+        // Simule a estimativa de tempo (em minutos) com base no GPS.
+        // Substitua esta lógica pela integração real com GPS, se disponível.
+        setTimeout(function () {
+            var tempoChegadaElement = document.getElementById("tempoChegada");
+            tempoChegadaElement.textContent = "10 minutos"; // Substitua pelo tempo real.
+        }, 3000); // Tempo de simulação de 3 segundos.
+    </script>
+</body>
+</html>

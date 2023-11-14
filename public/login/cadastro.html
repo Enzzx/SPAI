@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<a href="../conexaospai.php"></a>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="stylesheet" href="cadastro.css">
+    <title>Formulário</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-image">
+            
+        </div>
+        <div class="form">
+            <form action="#">
+                <div class="form-header">
+                    <h1>Cadastre-se</h1>
+
+                    <button><a href="../index.html">🏠</a></button>
+
+                    <button><a href="./login.html">Entrar</a></button>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="name">Nome e Sobrenome</label>
+                        <input id="name" type="text" name="name" placeholder="Digite seu nome" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="nameTrusted">Nome de Confiança</label>
+                        <input id="nameTrusted" type="text" name="nameTrusted" placeholder="Digite o nome de confiança" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="birthdate">Data de nascimento</label>
+                        <input id="birthdate" type="date" name="birthdate" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="email">E-mail</label>
+                        <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="emailTrusted">E-mail de confiança</label>
+                        <input id="emailTrusted" type="email" name="emailTrusted" placeholder="Digite o e-mail de confiança" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="number">Celular</label>
+                        <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="trustedCell">Celular de confiança</label>
+                        <input id="trustedCell" type="tel" name="trustedCell" placeholder="(xx) xxxx-xxxx" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="cpf">CPF</label>
+                        <input id="cpf" type="text" name="cpf" placeholder="Digite seu CPF" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="healthcare">Convênio</label>
+                        <input id="healthcare" type="text" name="healthcare" placeholder="Digite seu convênio" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="zipCode">CEP</label>
+                        <input id="zipCode" type="text" name="zipCode" placeholder="Digite o CEP" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="address">Endereço</label>
+                        <input id="address" type="text" name="address" placeholder="Digite seu endereço" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="residence">Residência</label>
+                        <input id="residence" type="text" name="residence" placeholder="Ex: casa, apartamento, etc." required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="houseNumber">Número de Residência</label>
+                        <input id="houseNumber" type="text" name="houseNumber" placeholder="Digite o número da residência" required>
+                    </div>                    
+
+                    <div class="input-box">
+                        <label for="complement">Complemento</label>
+                        <input id="complement" type="text" name="complement" placeholder="Complemento (opcional)">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="password">Senha</label>
+                        <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="confirmPassword">Confirme sua Senha</label>
+                        <input id="confirmPassword" type="password" name="confirmPassword"
+                            placeholder="Digite sua senha novamente" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="image">Foto de seu Rosto</label>
+                        <input id="image" type="file" name="image" required>
+                    </div>
+
+                </div>
+
+                <div class="gender-inputs">
+                    <h6>Gênero</h6>
+
+                    <div class="gender-group">
+                        <div class="gender-input">
+                            <input id="female" type="radio" name="gender">
+                            <label for="female">Feminino</label>
+                        </div>
+
+                        <div class="gender-input">
+                            <input id="male" type="radio" name="gender">
+                            <label for="male">Masculino</label>
+                        </div>
+
+                        <div class="gender-input">
+                            <input id="others" type="radio" name="gender">
+                            <label for="others">Outros</label>
+                        </div>
+
+                        <div class="gender-input">
+                            <input id="none" type="radio" name="gender">
+                            <label for="none">Prefiro não dizer</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button><a href="#">Continuar</a> </button>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

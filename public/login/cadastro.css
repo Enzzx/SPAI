@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+abbr {
+color: #AB6517;
+
+}
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #AB6517;
+}
+
+.container {
+    width: 80%;
+    height: 85vh;
+    display: flex;
+    box-shadow: 5px 5px 10px #00000036;
+}
+
+.form-image {
+    flex: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fde3a7d7;
+    background-image: url('../img/undraw_mobile_login_re_9ntv.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 1rem;
+}
+
+.form {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #eeeeee;
+    padding: 2rem 1rem;
+}
+form {
+    overflow-y: auto;
+}
+
+.form-header {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-header h1 {
+    position: relative;
+}
+
+.form-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: #AB6517;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.form-header button {
+    border: none;
+    background-color: #AB6517;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+.form-header button:hover {
+    background-color: #f9a826;
+}
+
+.form-header button a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+}
+
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.input-box input {
+    margin: 0.4rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+}
+
+.input-box input:hover {
+    background-color: #eeeeee75;
+}
+
+.input-box input:focus-visible {
+    background-color: #fde3a7d7;
+    outline: 1px solid;
+}
+
+.info {
+    display: none;
+    font-size: 0.8em;
+    color: #777;
+  }
+  
+
+.input-box label,
+.gender-inputs h6 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+
+.input-box input::placeholder {
+    color: #000000be;
+}
+
+.gender-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.62rem;
+    padding: 0 .5rem;
+}
+
+
+
+.gender-input input {
+    margin-right: 0.35rem;
+}
+
+.gender-input label {
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+form > button {
+    width: 100%;
+    margin-top: 2rem;
+    border: none;
+    background-color: #AB6517;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+form > button:hover {
+    background-color: #f9a826;
+}
+
+form > button a {
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+@media screen and (max-width: 1200px) {
+    
+    .container {
+        width: 90%;
+        height: auto;
+    }
+
+    .form-image {
+        flex: 30%
+    }
+
+    .form {
+        flex: 70%;
+        padding: 3rem 2rem;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+
+    .form-image {
+        display: none;
+    }
+
+    .form {
+        flex: 100%;
+    }
+    form {
+        width: 90%;
+        max-width: 550px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        z-index: 5;
+        padding-right: 3rem;
+        max-height: 10rem;
+        overflow-y: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .gender-inputs {
+        margin-top: 2rem;
+    }
+
+    .gender-group {
+        flex-direction: column;
+    }
+
+    .gender-title h6 {
+        margin: 0;
+    }
+
+    .gender-input {
+        margin-top: 0.5rem;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    /* Ajuste o tamanho da fonte para telas menores */
+    body {
+        font-size: 16px;
+    }
+
+    /* Ajuste do tamanho do formulário */
+    .form {
+        padding: 1rem;
+    }
+
+    /* Ajuste dos elementos de entrada */
+    .input-box input {
+        padding: 0.6rem 1rem;
+    }
+
+}
+
+
+
+
+

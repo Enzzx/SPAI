@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamada de 🚓 Polícia</title>
+    <link rel="stylesheet" type="text/css" href="./styleEmerg.css">
+</head>
+<body>
+    
+      </div>
+    <h1>Chamada de 🚓 Polícia</h1>
+    <form id="policeForm" method="post">
+        <label for="numeroEmergencia">Número de Emergência: 190</label>
+        <input type="tel" id="numeroEmergencia" name="numeroEmergencia" required>
+        <br><br>
+
+        <label for="nomeUnidade">Nome da Unidade Próxima: </label>
+        <input type="text" id="nomeUnidade" name="nomeUnidade" required>
+        <br><br>
+
+        <label>Motivo da Chamada:</label><br>
+        <input type="radio" id="acidente" name="motivo" value="Acidente">
+        <label for="acidente">Acidente</label><br>
+
+        <input type="radio" id="assalto" name="motivo" value="Assalto">
+        <label for="assalto">Assalto</label><br>
+
+        <input type="radio" id="outro" name="motivo" value="Outro">
+        <label for="outro">Outro</label><br>
+        <br>
+
+        <button type="submit">Confirmar Chamada</button>
+    </form>
+
+    <a href="../index.html" id="resetForm">Voltar ao Início</a>
+
+</body>
+</html>

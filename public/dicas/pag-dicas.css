@@ -1,0 +1,103 @@
+/* Estilo do cabeçalho */
+.header {
+  padding: 10px;
+  text-align: center;
+  background: #eeeeee;
+}
+body {
+  background-color: #eeeeee;
+}
+/* Aumentar o tamanho da fonte do elemento h1 */
+.header img {
+  max-width: 300px;
+  max-height: 250px;
+  width: auto;
+  height: auto;
+}
+
+/* Estilo da barra de navegação */
+.navbar {
+  overflow: hidden;
+  background-color: #AB6517;
+  /* Centralizar o texto dos botões */
+  text-align: center;
+}
+
+/* Estilo dos links da barra de navegação */
+.navbar a {
+  /* Remover o estilo de flutuação */
+  /* float: left; */
+  display: inline-block;
+  color: #000000;
+  background: #ffffff;
+  text-decoration: none;
+  /* Remover o alinhamento do texto */
+  /* text-align: center; */
+  padding: 13px 15px;
+  /* Adicionar uma margem entre os botões */
+  margin: 10px;
+  border-radius: 20px;
+}
+
+/* Mudar a cor dos links ao passar o mouse */
+.navbar a:hover {
+  background-color: #f9a826;
+  color: black;
+  transition: background 1s;
+}
+
+/* Alinhar os links à direita */
+.navbar a.left {
+  float: left;
+}
+
+/* Estilo da linha que contém o conteúdo principal e lateral */
+.row {
+  display: flex;
+}
+
+/* Estilo do conteúdo principal */
+.main {
+  flex: 70%;
+}
+
+li {
+  margin: 10px 0;
+}
+
+/* Estilo do rodapé */
+.footer {
+
+  padding: 15px;
+
+  text-align: right;
+
+  background: #AB6517;
+
+  margin-top: 50px;
+
+  height: 105px;
+}
+
+h3 {
+  color: #ffffff;
+}
+
+p {
+  text-align: justify;
+}
+
+
+@media screen and (max-width: 800px) {
+  .row {
+    flex-direction: column;
+    margin-top: 1em;
+  }
+  .side, .main {
+    flex: 100%;
+  }
+  .side {
+    background-size: cover;
+    min-height: 400px;
+  }
+}

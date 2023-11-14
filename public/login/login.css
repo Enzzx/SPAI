@@ -1,0 +1,141 @@
+/* Estilos gerais não responsivos */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #AB6517;
+}
+
+.container {
+    width: 80%;
+    height: 85vh;
+    display: flex;
+    box-shadow: 5px 5px 10px #00000036;
+}
+
+.form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #eeeeee;
+    padding: 2rem 1rem;
+}
+
+.form-header {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-header h1 {
+    position: relative;
+}
+
+.form-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: #AB6517;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.form-header button {
+    border: none;
+    background-color: #AB6517;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+.form-header button:hover {
+    background-color: #f9a826;
+}
+
+.form-header button a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.input-box input {
+    margin: 0.4rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+}
+
+input::placeholder {
+    color: #000000be;
+}
+
+form > button {
+    width: 100%;
+    margin-top: 2rem;
+    border: none;
+    background-color: #AB6517;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+form > button:hover {
+    background-color: #f9a826;
+}
+
+form > button a {
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+/* Estilos Responsivos */
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .form {
+        padding: 3rem 2rem;
+    }
+
+    .input-box {
+        max-width: 100%;
+    }
+
+    form > button {
+        max-width: 100%;
+    }
+}
