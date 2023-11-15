@@ -1,3 +1,3 @@
 # SPAI
 
-web app pra velho usar
+projeto de escola do 3iel007
