@@ -16,13 +16,13 @@
             
         </div>
         <div class="form">
-            <form action="#">
+            <form action="#" autocomplete="off">
                 <div class="form-header">
                     <h1>Cadastre-se</h1>
 
-                    <button><a href="../index.html">🏠</a></button>
+                    <a href="../../index.html"><button type="button">🏠</button></a>
 
-                    <button><a href="./login.html">Entrar</a></button>
+                    <a href="login.html"><button type="button">Entrar</button></a>
                 </div>
 
                 <div class="input-group">
@@ -42,28 +42,23 @@
                     </div>
 
                     <div class="input-box">
-                        <label for="email">E-mail</label>
-                        <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
-                    </div>
-
-                    <div class="input-box">
                         <label for="emailTrusted">E-mail de confiança</label>
                         <input id="emailTrusted" type="email" name="emailTrusted" placeholder="Digite o e-mail de confiança" required>
                     </div>
 
                     <div class="input-box">
                         <label for="number">Celular</label>
-                        <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
+                        <input id="number" type="tel" name="number" placeholder="xx xxxxx-xxxx" required>
                     </div>
 
                     <div class="input-box">
                         <label for="trustedCell">Celular de confiança</label>
-                        <input id="trustedCell" type="tel" name="trustedCell" placeholder="(xx) xxxx-xxxx" required>
+                        <input id="trustedCell" type="tel" name="trustedCell" placeholder="xx xxxxx-xxxx" required>
                     </div>
 
                     <div class="input-box">
                         <label for="cpf">CPF</label>
-                        <input id="cpf" type="text" name="cpf" placeholder="Digite seu CPF" required>
+                        <input id="cpf" type="number" name="cpf" placeholder="Digite seu CPF" required>
                     </div>
 
                     <div class="input-box">
@@ -73,17 +68,12 @@
 
                     <div class="input-box">
                         <label for="zipCode">CEP</label>
-                        <input id="zipCode" type="text" name="zipCode" placeholder="Digite o CEP" required>
+                        <input id="zipCode" type="number" name="zipCode" placeholder="Digite o CEP" required>
                     </div>
 
                     <div class="input-box">
                         <label for="address">Endereço</label>
                         <input id="address" type="text" name="address" placeholder="Digite seu endereço" required>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="residence">Residência</label>
-                        <input id="residence" type="text" name="residence" placeholder="Ex: casa, apartamento, etc." required>
                     </div>
 
                     <div class="input-box">
@@ -140,11 +130,56 @@
                     </div>
                 </div>
 
-                <button><a href="#">Continuar</a> </button>
+                <button id="cadastrar"><a>Continuar</a></button>
 
             </form>
         </div>
     </div>
+    <script>
+        const cadastrar = document.querySelector("#cadastrar")
+        const cep = document.querySelector("#zipCode")
+
+        cep.addEventListener('input', async (e) => {
+            const cepValue = e.target.value
+
+            if (cepValue.length === 8) {
+                try {
+                    const request = await fetch(`https://viacep.com.br/ws/${cepValue}/json`)
+                    const local = await request.json()
+                    console.log(local)
+
+                    let address = document.querySelector("#address")
+                    let houseNumber = document.querySelector("#houseNumber")
+                    address.value = `${local.bairro} - ${local.logradouro}` 
+                    houseNumber.placeholder = local.complemento
+                } catch (error) {
+                    console.log(error)
+                }
+            } else {
+                return
+            }
+        })
+
+        cadastrar.addEventListener('submit', (e) => {
+            e.preventDefault()
+            
+            const name = document.querySelector("#name").value
+            const nameTrusted = document.querySelector("#nameTrusted").value
+            const birthDate = document.querySelector("#birthdate").value
+            const emailTrusted = document.querySelector("#emailTrusted").value
+            const cell = document.querySelector("#number").value
+            const cellTrusted = document.querySelector("#trustedCell").value
+            const cpf = document.querySelector("#cpf").value
+            const healthcare = document.querySelector("#healthcare").value
+            const cep = document.querySelector("#zipCode").value
+            const houseNumber = document.querySelector("#houseNumber").value
+            const complement = document.querySelector("#complement").value
+            const password = document.querySelector("#password").value
+            const image = document.querySelector("#image").files[0]
+
+            console.log(`${name} ${nameTrusted} ${birthDate} ${emailTrusted} ${cell} ${cellTrusted} ${cpf} ${healthcare} ${cep} ${houseNumber} ${complement} ${password}`)
+        })
+    </script>
 </body>
 
 </html>

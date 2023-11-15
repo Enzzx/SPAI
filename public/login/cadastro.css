@@ -88,7 +88,7 @@ form {
     background-color: #f9a826;
 }
 
-.form-header button a {
+.form-header a button {
     text-decoration: none;
     font-weight: 500;
     color: #fff;
@@ -100,6 +100,7 @@ form {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem 0;
+    gap: 5px;
 }
 
 .input-box {
@@ -200,12 +201,29 @@ form > button a {
     .form {
         flex: 70%;
         padding: 3rem 2rem;
+        max-height: 40em;
     }
-
+    .input-group {
+        overflow-y: scroll;
+    }
+    
 }
 
 @media screen and (max-width: 900px) {
-
+    
+    body {
+        font-size: 16px;
+    }
+    
+    /* Ajuste do tamanho do formulário */
+    .form {
+        padding: 1rem;
+    }
+    
+    /* Ajuste dos elementos de entrada */
+    .input-box input {
+        padding: 0.6rem 1rem;
+    }
     .form-image {
         display: none;
     }
@@ -223,7 +241,6 @@ form > button a {
         z-index: 5;
         padding-right: 3rem;
         max-height: 10rem;
-        overflow-y: scroll;
         flex-wrap: nowrap;
     }
 
@@ -243,27 +260,3 @@ form > button a {
         margin-top: 0.5rem;
     }
 }
-
-
-@media screen and (max-width: 900px) {
-    /* Ajuste o tamanho da fonte para telas menores */
-    body {
-        font-size: 16px;
-    }
-
-    /* Ajuste do tamanho do formulário */
-    .form {
-        padding: 1rem;
-    }
-
-    /* Ajuste dos elementos de entrada */
-    .input-box input {
-        padding: 0.6rem 1rem;
-    }
-
-}
-
-
-
-
-
