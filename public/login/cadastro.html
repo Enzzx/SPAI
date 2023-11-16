@@ -16,7 +16,7 @@
             
         </div>
         <div class="form">
-            <form action="#" autocomplete="off">
+            <form autocomplete="off">
                 <div class="form-header">
                     <h1>Cadastre-se</h1>
 
@@ -130,13 +130,13 @@
                     </div>
                 </div>
 
-                <button id="cadastrar"><a>Continuar</a></button>
+                <button id="cadastrar"><a>cadastrar</a></button>
 
             </form>
         </div>
     </div>
     <script>
-        const cadastrar = document.querySelector("#cadastrar")
+        const cadastrar = document.forms[0]
         const cep = document.querySelector("#zipCode")
 
         cep.addEventListener('input', async (e) => {
@@ -161,6 +161,7 @@
         })
 
         cadastrar.addEventListener('submit', (e) => {
+            console.log('clickei')
             e.preventDefault()
             
             const name = document.querySelector("#name").value
@@ -170,14 +171,38 @@
             const cell = document.querySelector("#number").value
             const cellTrusted = document.querySelector("#trustedCell").value
             const cpf = document.querySelector("#cpf").value
-            const healthcare = document.querySelector("#healthcare").value
+            const healthCare = document.querySelector("#healthcare").value
             const cep = document.querySelector("#zipCode").value
             const houseNumber = document.querySelector("#houseNumber").value
             const complement = document.querySelector("#complement").value
             const password = document.querySelector("#password").value
+            const confirmPass = document.querySelector("#confirmPassword").value
             const image = document.querySelector("#image").files[0]
 
-            console.log(`${name} ${nameTrusted} ${birthDate} ${emailTrusted} ${cell} ${cellTrusted} ${cpf} ${healthcare} ${cep} ${houseNumber} ${complement} ${password}`)
+            if (password == confirmPass) {
+                const reader = new FileReader()
+                reader.readAsDataURL(image)
+                reader.addEventListener('load', async () => {
+                    const url = reader.result
+                    const data = { name, nameTrusted, birthDate, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, url }
+
+                    const head = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    }
+
+                    try {
+                        const requisition = await fetch('/register', head)
+                        const result = await requisition.json()
+                    } catch (err) {
+                        if (err) throw err
+                    }
+                })
+
+            } else {
+                document.querySelector("#confirmPassword").style.backgroundColor = "#fdd3c4";
+            }
         })
     </script>
 </body>
