@@ -28,6 +28,7 @@ cadastrar.addEventListener('submit', (e) => {
     const name = document.querySelector("#name").value
     const nameTrusted = document.querySelector("#nameTrusted").value
     const birthDate = document.querySelector("#birthdate").value
+    const email = document.querySelector("#email").value
     const emailTrusted = document.querySelector("#emailTrusted").value
     const cell = document.querySelector("#number").value
     const cellTrusted = document.querySelector("#trustedCell").value
@@ -45,7 +46,7 @@ cadastrar.addEventListener('submit', (e) => {
         reader.readAsDataURL(image)
         reader.addEventListener('load', async () => {
             const url = reader.result
-            const data = { name, nameTrusted, birthDate, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, url }
+            let data = { name, nameTrusted, birthDate, email, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, url }
 
             const head = {
                 method: 'POST',
@@ -60,10 +61,33 @@ cadastrar.addEventListener('submit', (e) => {
                 const responseP = document.querySelector(".response-p")
 
                 console.log(result.message)
-                boxResult.classList.add('visible')
                 if (result.created) {
-                    responseP.textContent = "conta criada com sucesso"
+                    console.log('login automático')
+                    data = { email, password }
+
+                    async function autoRegister() {
+                        try {
+                            const login = await fetch('/login', head)
+                            const loginResponse = await login.json()
+
+                            if (loginResponse.log) {
+                                const id = loginResponse.id
+                                const nome = loginResponse.nome
+
+
+                                console.log('login automatico realizado com sucesso')
+                                boxResult.classList.add('visible')
+                                responseP.textContent = "conta criada com sucesso"
+                            } else {
+                                console.log('login automático falhou')
+                            }
+                        } catch (err) {
+                            console.error(err)
+                        }
+                    }
+
                 } else {
+                    boxResult.classList.add('visible')
                     responseP.textContent = "Erro inesperado"
                 }
             } catch (err) {
