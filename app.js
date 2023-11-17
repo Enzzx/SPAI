@@ -42,7 +42,7 @@ app.post('/register', async (req, res) => {
     try {
         const register = await pool.query(doRegister, [name, nameTrusted, birthDate, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, url])
 
-        console.log(register.rows)
+        console.log(register)
         const response = {
             message: 'conta criada',
             created: true

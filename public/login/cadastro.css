@@ -192,7 +192,7 @@ form > button a {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: -50% -50%;
+    translate: -50% -50%;
     background-color: green;
     width: 200px;
     height: 100px;
