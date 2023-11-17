@@ -23,7 +23,6 @@ cep.addEventListener('input', async (e) => {
 })
 
 cadastrar.addEventListener('submit', (e) => {
-    console.log('clickei')
     e.preventDefault()
 
     const name = document.querySelector("#name").value
@@ -57,6 +56,13 @@ cadastrar.addEventListener('submit', (e) => {
             try {
                 const requisition = await fetch('/register', head)
                 const result = await requisition.json()
+
+                console.log(result.message)
+                if (result.created) {
+                    window.location.href = 'https://spai.onrender.com/'
+                } else {
+                    console.log('erro inesperado')
+                }
             } catch (err) {
                 if (err) throw err
             }
