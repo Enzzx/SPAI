@@ -75,7 +75,7 @@ cadastrar.addEventListener('submit', (e) => {
                                 const nome = loginResponse.nome
 
 
-                                console.log('login automatico realizado com sucesso')
+                                console.log(`login automatico realizado com sucesso, ${id} + ${nome}`)
                                 boxResult.classList.add('visible')
                                 responseP.textContent = "conta criada com sucesso"
                             } else {
