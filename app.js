@@ -23,7 +23,7 @@ app.use(express.static(__dirname))
 
 app.post('/register', async (req, res) => {
     const data = req.body
-    const doRegister = "INSERT INTO CADASTRO (nome, nometrust, nasc, emailtrust, cell, celltrust, cpf, conven, cep, numero, complemento, senha, imgbase) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13);"
+    const doRegister = "INSERT INTO cadastro (nome, nometrust, nasc, emailtrust, cell, celltrust, cpf, conven, cep, numero, complemento, senha, imgbase) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13);"
 
     const name = data.name
     const nameTrusted = data.nameTrusted
@@ -42,6 +42,7 @@ app.post('/register', async (req, res) => {
     try {
         const register = await pool.query(doRegister, [name, nameTrusted, birthDate, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, url])
 
+        console.log(register.rows)
         const response = {
             message: 'conta criada',
             created: true
