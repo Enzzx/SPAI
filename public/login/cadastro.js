@@ -56,12 +56,15 @@ cadastrar.addEventListener('submit', (e) => {
             try {
                 const requisition = await fetch('/register', head)
                 const result = await requisition.json()
+                const boxResult = document.querySelector(".box-result")
+                const responseP = document.querySelector(".response-p")
 
                 console.log(result.message)
+                boxResult.classList.add('visible')
                 if (result.created) {
-                    window.location.href = 'https://spai.onrender.com/'
+                    responseP.textContent = "conta criada com sucesso"
                 } else {
-                    console.log('erro inesperado')
+                    responseP.textContent = "Erro inesperado"
                 }
             } catch (err) {
                 if (err) throw err
