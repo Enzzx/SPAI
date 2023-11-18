@@ -4,7 +4,7 @@ const port = 8080
 const jwt = require('jsonwebtoken')
 const { Pool } = require('pg')
 
-const pool = new Pool ({
+const pool = new Pool({
     user: 'zenzx',
     host: 'dpg-claoom3mot1c73849ajg-a',
     database: 'db_kanjicionario',
@@ -12,12 +12,12 @@ const pool = new Pool ({
     port: 5432
 })
 pool.connect()
-.then(() => {
-    console.log("DB tá na linha")
-})
-.catch(err => {
-    console.log(err)
-})
+    .then(() => {
+        console.log("DB tá na linha")
+    })
+    .catch(err => {
+        console.log(err)
+    })
 
 app.use(express.json({ limit: '10mb' }))
 app.use(express.static(__dirname))
@@ -47,7 +47,7 @@ app.post('/register', async (req, res) => {
 
         if (verify.rows.length !== 0) {
             console.log("usuário já existe")
-            
+
             const response = {
                 message: 'tente outro email'
             }
@@ -64,9 +64,9 @@ app.post('/register', async (req, res) => {
         res.status(200).json(response)
     } catch (err) {
         console.error(err)
-        res.status(500).json({message: 'Erro interno do servidor'})
+        res.status(500).json({ message: 'Erro interno do servidor' })
     }
-    
+
 })
 
 app.post('/logIn', async (req, res) => {
@@ -102,6 +102,31 @@ app.post('/logIn', async (req, res) => {
     } catch (err) {
         console.error(err)
     }
+})
+
+app.post('/getAccount', async (req, res) => {
+    const tokenHeader = req.headers['authorization'];
+
+    if (!tokenHeader) {
+        return res.status(401).json({ message: 'Token não fornecido' });
+    }
+
+    try {
+        const token = tokenHeader.split(' ')[1];
+        const payload = jwt.verify(token, 'SPFC')
+        const id = payload.id
+
+        const data = {
+            id: id,
+            message: 'id recebido',
+            has: true
+        }
+        res.status(200).json(data)
+    } catch (err) {
+        console.log(err)
+    }
+
+
 })
 
 app.listen(port, (err) => {

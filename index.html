@@ -139,13 +139,13 @@
     window.onload = async () => {
       let userInfo = getCookie("userInfo")
 
-      if (userInfo !== NULL) {
+      if (userInfo !== null) {
         userInfo = JSON.parse(decodeURIComponent(userInfo))
         console.log(userInfo)
 
         const head = {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },body: JSON.stringify(userInfo)
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${userInfo.token}` }
         }
 
         try {
@@ -156,9 +156,15 @@
             const id = resAcc.id
             console.log(resAcc.message, id)
 
+            userInfo = JSON.stringify(userInfo)
+            let date = new Date()
+            date.setDate(date.getDate() + 7)
+            document.cookie = `userInfo=${userInfo}; expires=${date.toUTCString()}; SameSite=Strict; path=/`
             const button = document.querySelector(".right")
             button.innerHTML = '<i class="fa-solid fa-user" style="color: #AB6517;"></i>'
             button.href = 'conta.html'
+          } else {
+            console.log('erro na verificação do token, fazer login')
           }
         } catch (err) {
           console.error(err)

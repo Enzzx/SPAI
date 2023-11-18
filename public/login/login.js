@@ -21,14 +21,14 @@ document.forms[0].addEventListener('submit', async (e) => {
 
             console.log(`login realizado, ${nome} + ${token}`)
 
-            let resCookie = {
+            let userInfo = {
                 token: token,
                 nome: nome
             }
-            resCookie = JSON.stringify(resCookie)
+            userInfo = JSON.stringify(userInfo)
             let date = new Date()
             date.setDate(date.getDate() + 7)
-            document.cookie = `userInfo=${resCookie}; expires=${date.toUTCString()}; SameSite=None; path=/`
+            document.cookie = `userInfo=${userInfo}; expires=${date.toUTCString()}; SameSite=Strict; path=/`
 
             window.location.assign("https://spai.onrender.com")
         } else {
