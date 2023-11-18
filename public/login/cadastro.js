@@ -72,7 +72,7 @@ cadastrar.addEventListener('submit', (e) => {
 
                             if (loginResponse.log) {
                                 const id = loginResponse.id
-                                const nome = loginResponse.nome
+                                const nome = loginResponse.name
 
 
                                 console.log(`login automatico realizado com sucesso, ${id} + ${nome}`)
