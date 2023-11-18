@@ -150,19 +150,21 @@
 
         try {
           const getAcc = await fetch('/getAccount', head)
-          const resAcc = await getAcc()
+          const resAcc = await getAcc.json()
 
           if (resAcc.has) {
             const id = resAcc.id
             console.log(resAcc.message, id)
 
+            sessionStorage('idUsuário', id)
             userInfo = JSON.stringify(userInfo)
             let date = new Date()
             date.setDate(date.getDate() + 7)
             document.cookie = `userInfo=${userInfo}; expires=${date.toUTCString()}; SameSite=Strict; path=/`
+
             const button = document.querySelector(".right")
             button.innerHTML = '<i class="fa-solid fa-user" style="color: #AB6517;"></i>'
-            button.href = 'conta.html'
+            button.href = 'public/conta/conta.html'
           } else {
             console.log('erro na verificação do token, fazer login')
           }
