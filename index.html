@@ -135,5 +135,46 @@
       </svg></a>
 
   </div>
+  <script>
+    window.onload = async () => {
+      let userInfo = getCookie("userInfo")
+
+      if (userInfo !== NULL) {
+        userInfo = JSON.parse(decodeURIComponent(userInfo))
+        console.log(userInfo)
+
+        const head = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },body: JSON.stringify(userInfo)
+        }
+
+        try {
+          const getAcc = await fetch('/getAccount', head)
+          const resAcc = await getAcc()
+
+          if (resAcc.has) {
+            const id = resAcc.id
+            console.log(resAcc.message, id)
+
+            const button = document.querySelector(".right")
+            button.innerHTML = '<i class="fa-solid fa-user" style="color: #AB6517;"></i>'
+            button.href = 'conta.html'
+          }
+        } catch (err) {
+          console.error(err)
+        }
+      }
+    }
+
+    function getCookie(cookieName) {
+		const cookies = document.cookie.split('; ')
+		for (let i = 0; i < cookies.length; i++) {
+			const cookie = cookies[i].split('=')
+			if (cookie[0] === cookieName) {
+				return cookie[1]
+			}
+		}
+	}
+  </script>
 </body>
 </html>
