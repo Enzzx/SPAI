@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="public/style.css">
   <script src="https://kit.fontawesome.com/379f99bab9.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <div class="header">
     <div class="form-image">
@@ -16,7 +17,8 @@
   </div>
   <div class="navbar">
     <!-- Adicione os botões dentro das tags <a> -->
-    <a href="public/login/cadastro.html" class="right"><i class="fa-solid fa-user" style="color: #AB6517;"></i> Entrar</a>      
+    <a href="public/login/cadastro.html" class="right"><i class="fa-solid fa-user" style="color: #AB6517;"></i>
+      Entrar</a>
     <a href="public/emergencia/policia.html">🚓 Polícia</a>
     <a href="public/emergencia/ambulancia.html">🚑 Ambulância</a>
     <a href="public/emergencia/bombeiro.html">🚒 Bombeiro</a>
@@ -140,51 +142,63 @@
       let userInfo = getCookie("userInfo")
 
       if (userInfo !== null) {
-        userInfo = JSON.parse(decodeURIComponent(userInfo))
-        console.log(userInfo)
+        const dados = sessionStorage.getItem('dadosUser')
+        if (dados !== null) {
+          userInfo = JSON.stringify(userInfo)
+          let date = new Date()
+          date.setDate(date.getDate() + 7)
+          document.cookie = `userInfo=${userInfo}; expires=${date.toUTCString()}; SameSite=Strict; path=/`
 
-        const head = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${userInfo.token}` }
-        }
+        } else {
+          userInfo = JSON.parse(decodeURIComponent(userInfo))
+          console.log(userInfo)
 
-        try {
-          const getAcc = await fetch('/getAccount', head)
-          const resAcc = await getAcc.json()
-
-          if (resAcc.has) {
-            let dados = resAcc.dados
-            dados = JSON.stringify(dados)
-            console.log(resAcc.message, dados)
-
-
-            sessionStorage.setItem('dadosUser', dados)
-            userInfo = JSON.stringify(userInfo)
-            let date = new Date()
-            date.setDate(date.getDate() + 7)
-            document.cookie = `userInfo=${userInfo}; expires=${date.toUTCString()}; SameSite=Strict; path=/`
-
-            const button = document.querySelector(".right")
-            button.innerHTML = '<i class="fa-solid fa-user" style="color: #AB6517;"></i>'
-            button.href = 'public/conta/conta.html'
-          } else {
-            console.log('erro na verificação do token, fazer login')
+          const head = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${userInfo.token}` }
           }
-        } catch (err) {
-          console.error(err)
+
+          try {
+            const getAcc = await fetch('/getAccount', head)
+            const resAcc = await getAcc.json()
+
+            if (resAcc.has) {
+              let dados = resAcc.dados
+              dados = JSON.stringify(dados)
+              console.log(resAcc.message)
+
+
+              sessionStorage.setItem('dadosUser', dados)
+              userInfo = JSON.stringify(userInfo)
+              let date = new Date()
+              date.setDate(date.getDate() + 7)
+              document.cookie = `userInfo=${userInfo}; expires=${date.toUTCString()}; SameSite=Strict; path=/`
+
+              const button = document.querySelector(".right")
+              button.innerHTML = '<i class="fa-solid fa-user" style="color: #AB6517;"></i>Conta'
+              button.href = 'public/conta/conta.html'
+            } else {
+              console.log('erro na verificação do token, fazer login')
+            }
+          } catch (err) {
+            console.error(err)
+          }
         }
+      } else {
+        return
       }
     }
 
     function getCookie(cookieName) {
-		const cookies = document.cookie.split('; ')
-		for (let i = 0; i < cookies.length; i++) {
-			const cookie = cookies[i].split('=')
-			if (cookie[0] === cookieName) {
-				return cookie[1]
-			}
-		}
-	}
+      const cookies = document.cookie.split('; ')
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].split('=')
+        if (cookie[0] === cookieName) {
+          return cookie[1]
+        }
+      }
+    }
   </script>
 </body>
+
 </html>

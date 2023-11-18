@@ -118,7 +118,7 @@ app.post('/getAccount', async (req, res) => {
     try {
         const dados = await pool.query(pegar, [id])
         const data = {
-            dados: dados,
+            dados: dados.rows[0],
             message: 'id recebido',
             has: true
         }
