@@ -73,7 +73,7 @@ app.post('/login', async (req, res) => {
     const searchId = "SELECT id, nome FROM cadastro WHERE email = $1 AND senha = $2;"
 
     const email = data.email
-    const password = data.email
+    const password = data.password
 
     try {
         const hasId = await pool.query(searchId, [email, password])
