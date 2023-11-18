@@ -111,13 +111,14 @@ app.post('/getAccount', async (req, res) => {
         return res.status(401).json({ message: 'Token não fornecido' });
     }
 
+    const token = tokenHeader.split(' ')[1];
+    const payload = jwt.verify(token, 'SPFC')
+    const id = payload.id
+    const pegar = "SELECT * from cadastro WHERE id = $1;"
     try {
-        const token = tokenHeader.split(' ')[1];
-        const payload = jwt.verify(token, 'SPFC')
-        const id = payload.id
-
+        const dados = await pool.query(pegar, [id])
         const data = {
-            id: id,
+            dados: dados,
             message: 'id recebido',
             has: true
         }

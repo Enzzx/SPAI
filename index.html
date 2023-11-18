@@ -153,10 +153,12 @@
           const resAcc = await getAcc.json()
 
           if (resAcc.has) {
-            const id = resAcc.id
-            console.log(resAcc.message, id)
+            let dados = resAcc.dados
+            dados = JSON.stringify(dados)
+            console.log(resAcc.message, dados)
 
-            sessionStorage('idUsuário', id)
+
+            sessionStorage.setItem('dadosUser', dados)
             userInfo = JSON.stringify(userInfo)
             let date = new Date()
             date.setDate(date.getDate() + 7)
