@@ -48,7 +48,7 @@
             }
 
             try {
-                const login = await fetch('/login', head)
+                const login = await fetch('/logIn', head)
                 const result = await login.json()
 
                 if (result.log) {
