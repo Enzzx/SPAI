@@ -37,8 +37,8 @@
         document.forms[0].addEventListener('submit', async (e) => {
             e.preventDefault()
 
-            const email = document.querySelector("#email")
-            const senha = document.querySelector("#password")
+            const email = document.querySelector("#email").value
+            const senha = document.querySelector("#password").value
 
             const data = { email, senha }
             const head = {
