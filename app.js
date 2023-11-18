@@ -68,7 +68,7 @@ app.post('/register', async (req, res) => {
     
 })
 
-app.post('/login', async (req, res) => {
+app.post('/logIn', async (req, res) => {
     const data = req.body
     const searchId = "SELECT id, nome FROM cadastro WHERE email = $1 AND senha = $2;"
 
