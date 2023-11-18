@@ -33,6 +33,37 @@
             </form>
         </div>
     </div>
+    <script>
+        document.forms[0].addEventListener('submit', async (e) => {
+            e.preventDefault()
+
+            const email = document.querySelector("#email")
+            const senha = document.querySelector("#password")
+
+            const data = { email, senha }
+            const head = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }
+
+            try {
+                const login = await fetch('login', head)
+                const result = await login.json()
+
+                if (result.log) {
+                    const id = result.id
+                    const nome = result.nome
+
+                    console.log(`login realizado, ${id} + ${nome}`)
+                } else {
+                    console.log(result.message)
+                }
+            } catch (err) {
+                console.error(err)
+            }
+        })
+    </script>
 </body>
 
 </html>

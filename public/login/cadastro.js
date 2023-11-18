@@ -85,10 +85,11 @@ cadastrar.addEventListener('submit', (e) => {
                             console.error(err)
                         }
                     }
+                    autoRegister()
 
                 } else {
                     boxResult.classList.add('visible')
-                    responseP.textContent = "Erro inesperado"
+                    responseP.textContent = result.message
                 }
             } catch (err) {
                 if (err) throw err
