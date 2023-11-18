@@ -52,10 +52,19 @@
                 const result = await login.json()
 
                 if (result.log) {
-                    const id = result.id
+                    const token = result.token
                     const nome = result.name
 
-                    console.log(`login realizado, ${id} + ${nome}`)
+                    console.log(`login realizado, ${id} + ${token}`)
+
+                    let resCookie = {
+                        token: token,
+                        nome: nome
+                    }
+                    resCookie = JSON.stringify(resCookie)
+                    let date = new Date()
+                    date.setDate(date.getDate() + 7)
+                    document.cookie = `userInfo=${resCookie}; expires=${date.toUTCString()}; path=/`
                 } else {
                     console.log(result.message)
                 }

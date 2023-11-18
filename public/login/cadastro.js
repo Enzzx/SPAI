@@ -67,7 +67,7 @@ cadastrar.addEventListener('submit', (e) => {
 
                     async function autoRegister() {
                         try {
-                            const login = await fetch('/login', head)
+                            const login = await fetch('/logIn', head)
                             const loginResponse = await login.json()
 
                             if (loginResponse.log) {

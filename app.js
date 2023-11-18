@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 8080
+const jwt = require('jsonwebtoken')
 const { Pool } = require('pg')
 
 const pool = new Pool ({
@@ -89,9 +90,10 @@ app.post('/logIn', async (req, res) => {
         }
         const id = hasId.rows[0].id
         const nome = hasId.rows[0].nome
+        const token = jwt.sign({ id: id }, 'SPFC', { expiresIn: '7d' })
 
         const response = {
-            id: id,
+            token: token,
             name: nome,
             message: 'usuário encontrado',
             log: true
