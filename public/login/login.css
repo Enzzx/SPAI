@@ -18,6 +18,42 @@ body {
     background: #AB6517;
 }
 
+body {
+    background-color: #d8882d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #f9a826;
+    padding: 13px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(238, 117, 117, 0.1);
+}
+
+.no-account-button {
+    text-align: center; /* Centraliza o botão */
+    margin-top: 20px; /* Ajusta o espaçamento superior */
+}
+
+/* Estilos para o botão "Não tenho uma conta" */
+.no-account-button a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #AB6517;
+    padding: 2px 8px; /* Ajusta o espaçamento interno do botão */
+    border-radius: 5px;
+    display: inline-block;
+}
+
+
+.no-account-button a:hover {
+    background-color: #f9a826; /* Cor de fundo do botão ao passar o mouse */
+}
+
 .container {
     width: 80%;
     height: 85vh;
