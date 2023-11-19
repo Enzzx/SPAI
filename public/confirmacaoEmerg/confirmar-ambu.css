@@ -1,37 +1,59 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Emergência</title>
+    <link rel="stylesheet" type="text/css" href="confirmar-emerg.css">
+</head>
+<body>
+    <div id="container">
+    <h1>Chamada de Emergência Confirmada</h1>
+    <p>A ambulância foi acionada e estará chegando ao destino em:</p>
+    <div id="tempoChegada">Procurando a unidade mais próxima...</div>
+    
+    <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+		<div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div><script>(function () {
+        var setting = {"query":"Senac Lapa Tito - Rua Tito - Vila Romana, São Paulo - SP, Brasil","width":405,"height":397,"satellite":true,"zoom":19,"placeId":"ChIJT7BjVnf4zpQRCYNfAOk1OJI","cid":"0x923835e9005f8309","coords":[-23.5280936,-46.6918154],"lang":"pt","queryString":"Senac Lapa Tito - Rua Tito - Vila Romana, São Paulo - SP, Brasil","centerCoord":[-23.5280936,-46.6918154],"id":"map-9cd199b9cc5410cd3b1ad21cab2e54d3","embed_id":"1010849"};
+        var d = document;
+        var s = d.createElement('script');
+        s.src = 'https://1map.com/js/script-for-user.js?embed_id=1010849';
+        s.async = true;
+        s.onload = function (e) {
+          window.OneMap.initMap(setting)
+        };
+        const div = document.querySelector('#map-9cd199b9cc5410cd3b1ad21cab2e54d3');
+const text = document.createTextNode('Sua Localização');
+div.appendChild(text);
+        var to = d.getElementsByTagName('script')[0];
+        to.parentNode.insertBefore(s, to);
+      })();</script><a href="https://1map.com/pt/map-embed">Sua Localização</a></div>
 
-h1 {
-    color: #333;
-    text-align: center;
-    padding: 20px 0;
-}
+<div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d4">
+    <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d4"></div><script>(function () {
+    var setting =  {"query":"Hospital São Camilo - Unidade Pompeia (Pronto Socorro) - Av. Pompéia, 1178 - Pompeia, São Paulo - SP, 05022-001, Brasil","width":405,"height":397,"satellite":true,"zoom":18,"placeId":"ChIJTY_7SN1XzpQRhohJUy2oNog","cid":"0x8836a82d53498886","coords":[-23.53393459999999,-46.6883208],"lang":"pt","queryString":"Hospital São Camilo - Unidade Pompeia (Pronto Socorro) - Av. Pompéia, 1178 - Pompeia, São Paulo - SP, 05022-001, Brasil","centerCoord":[-23.53393459999999,-46.6883208],"id":"map-9cd199b9cc5410cd3b1ad21cab2e54d4","embed_id":"1010849"};
+    var d = document;
+    var s = d.createElement('script');
+    s.src = 'https://1map.com/js/script-for-user.js?embed_id=1010849';
+    s.async = true;
+    s.onload = function (e) {
+      window.OneMap.initMap(setting)
+    };
+    const div = document.querySelector('#map-9cd199b9cc5410cd3b1ad21cab2e54d4');
+const text = document.createTextNode('Localização da Emergência');
+div.appendChild(text);
+    var to = d.getElementsByTagName('script')[0];
+    to.parentNode.insertBefore(s, to);
+  })();</script><a href="https://1map.com/pt/map-embed">1 Map</a></div>
 
-p {
-    color: #666;
-    font-size: 1.2em;
-    text-align: center;
-}
-
-#tempoChegada {
-    font-size: 2em;
-    color: #ff0000; /* vermelho */
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-a {
-    display: block;
-    width: 200px;
-    height: 50px;
-    margin: 20px auto;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    line-height: 50px;
-    text-decoration: none;
-}
+    <a href="../../index.html">Voltar ao Início</a>
+</div>
+    <script>
+        
+        setTimeout(function () {
+            var tempoChegadaElement = document.getElementById("tempoChegada");
+            tempoChegadaElement.textContent = "3 minutos";
+        }, 3000);
+    </script>
+</body>
+</html>
