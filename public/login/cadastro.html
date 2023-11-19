@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<a href="../conexaospai.php"></a>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,49 +33,77 @@
                         <input id="name" type="text" name="name" placeholder="Digite seu nome" required>
                     </div>
 
-                    <div class="input-box">
-                        <label for="nameTrusted">Nome de Confiança</label>
+                    <div class="input-box tooltip">
+                        <label for="nameTrusted">Nome de Confiança<span class="question-mark">&#128712;</span></label>
                         <input id="nameTrusted" type="text" name="nameTrusted" placeholder="Digite o nome de confiança" required>
+                       
+                        <div class="info">
+                            <I>Informe o nome de alguém que você confie.</I>
+                        </div>
+                    
                     </div>
 
                     <div class="input-box">
                         <label for="birthdate">Data de nascimento</label>
-                        <input id="birthdate" type="date" name="birthdate" required>
+                        <input id="birthdate" type="date" name="birthdate" max="" onblur="validarData(this)" required>
                     </div>
+
+                    <script>
+                        function validarData(input) {
+                            let dataAtual = new Date();
+                            let dataInserida = new Date(input.value);
+
+                            if (dataInserida > dataAtual) {
+                                alert("Data de nascimento não pode ser no futuro.");
+                                input.value = '';
+                            }
+                        }
+
+                        document.getElementById('birthdate').max = new Date().toISOString().split('T')[0];
+                    </script>
 
                     <div class="input-box">
                         <label for="email">E-mail</label>
                         <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
                     </div>
                     
-                    <div class="input-box">
-                        <label for="emailTrusted">E-mail de confiança</label>
+                    <div class="input-box tooltip">
+                        <label for="emailTrusted">E-mail de confiança<span class="question-mark">&#128712;</span></label>
                         <input id="emailTrusted" type="email" name="emailTrusted" placeholder="Digite o e-mail de confiança" required>
+                        
+                        <div class="info">
+                            Informe o e-mail de alguém que você confie.
+                        </div>
                     </div>
 
                     <div class="input-box">
                         <label for="number">Celular</label>
-                        <input id="number" type="tel" name="number" placeholder="xx xxxxx-xxxx" required>
+                        <input id="number" type="tel" name="number" placeholder="(xx) xxxxx-xxxx"  oninput="formatarTelefone(this)" required>
                     </div>
 
-                    <div class="input-box">
-                        <label for="trustedCell">Celular de confiança</label>
-                        <input id="trustedCell" type="tel" name="trustedCell" placeholder="xx xxxxx-xxxx" required>
+                    <!-- Add a question mark icon next to the labels -->
+                <div class="input-box tooltip">
+                    <label for="trustedCell">Celular de confiança <span class="question-mark">&#128712;</span></label>
+                    <input id="trustedCell" type="tel" name="trustedCell" placeholder="(xx) xxxxx-xxxx" oninput="formatarTelefone(this)" required>
+                    <!-- Add a tooltip element with additional information -->
+                    <div class="info">
+                        Informe o número do celular de alguém que você confie.
                     </div>
+                </div>
 
                     <div class="input-box">
                         <label for="cpf">CPF</label>
-                        <input id="cpf" type="number" name="cpf" placeholder="Digite seu CPF" required>
+                        <input id="cpf" type="number" name="cpf" placeholder="Digite seu CPF" oninput="inputCPF(this, 11)" pattern="\d{11}" title="Digite um CPF válido" required>
                     </div>
-
+                    
                     <div class="input-box">
                         <label for="healthcare">Convênio</label>
-                        <input id="healthcare" type="text" name="healthcare" placeholder="Digite seu convênio" required>
+                        <input id="healthcare" type="text" name="healthcare" placeholder="Convênio (opcional)">
                     </div>
 
                     <div class="input-box">
                         <label for="zipCode">CEP</label>
-                        <input id="zipCode" type="number" name="zipCode" placeholder="Digite o CEP" required>
+                        <input id="zipCode" type="number" name="zipCode" placeholder="Digite o CEP" oninput="inputCEP(this)" pattern="\d{8}" title="Digite um CEP válido" required>
                     </div>
 
                     <div class="input-box">
@@ -104,46 +131,62 @@
                         <input id="confirmPassword" type="password" name="confirmPassword"
                             placeholder="Digite sua senha novamente" required>
                     </div>
-
-                    <div class="input-box">
-                        <label for="image">Foto de seu Rosto</label>
-                        <input id="image" type="file" name="image" required>
-                    </div>
-
                 </div>
 
-                <div class="gender-inputs">
-                    <h6>Gênero</h6>
-
-                    <div class="gender-group">
-                        <div class="gender-input">
-                            <input id="female" type="radio" name="gender">
-                            <label for="female">Feminino</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="male" type="radio" name="gender">
-                            <label for="male">Masculino</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="others" type="radio" name="gender">
-                            <label for="others">Outros</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="none" type="radio" name="gender">
-                            <label for="none">Prefiro não dizer</label>
-                        </div>
-                    </div>
-                </div>
-
-                <button id="cadastrar"><a>cadastrar</a></button>
-
+                    <button id="cadastrar"><a href="#">Cadastrar</a></button>
+                
             </form>
         </div>
     </div>
-    <script src="cadastro.js"></script>
-</body>
+    
+    <script>
+        function inputCPF(input) {
+            let numero = input.value.replace(/\D/g, '');
 
+            if (numero.length > 11) {
+                input.value = numero.slice(0, 11);
+            }
+        }
+
+        // Adiciona um ouvinte de evento para limitar enquanto digita
+        let cpfInput = document.getElementById('cpf');
+        cpfInput.addEventListener('input', function () {
+            inputCPF(cpfInput);
+        });
+    </script>
+
+    <script>
+        function inputCEP(input) {
+            let numero = input.value.replace(/\D/g, '');
+
+            if (numero.length > 8) {
+                input.value = numero.slice(0, 8);
+            }
+        }
+        // Adiciona um ouvinte de evento para limitar enquanto digita
+        let zipCodeInput = document.getElementById('zipCode');
+        zipCodeInput.addEventListener('input', function () {
+            inputCEP(zipCodeInput);
+        });
+    </script>
+
+    <script>
+        function formatarTelefone(input) {
+            let numero = input.value.replace(/\D/g, '');
+            let formatacao;
+
+            if (numero.length <= 2) {
+                formatacao = `(${numero}`;
+            } else if (numero.length <= 7) {
+                formatacao = `(${numero.slice(0, 2)}) ${numero.slice(2)}`;
+            } else {
+                formatacao = `(${numero.slice(0, 2)}) ${numero.slice(2, 7)}-${numero.slice(7, 11)}`;
+            }
+
+            input.value = formatacao;
+        }
+    </script>
+    <script src="cadastro.js"></script>
+
+</body>
 </html>
