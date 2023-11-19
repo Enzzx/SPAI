@@ -7,15 +7,11 @@
     <link rel="stylesheet" type="text/css" href="./styleEmerg.css">
 </head>
 <body>
+    <div class="container"></div>
     <h1>Chamada de 🚑 Ambulância</h1>
-    <form id="ambulanceForm" action="ambulancia.php" method="post">
+    <form id="ambulanceForm" method="post">
         <label for="numeroEmergencia">Número de Emergência: 192</label>
-        <input type="tel" id="numeroEmergencia" name="numeroEmergencia" required>
-        <br><br>
-
-        <label for="nomeUnidade">Nome da Unidade Próxima: </label>
-        <input type="text" id="nomeUnidade" name="nomeUnidade" required>
-        <br><br>
+        <br>
 
         <label>Motivo da Chamada:</label><br>
         <input type="radio" id="acidente" name="motivo" value="Acidente">
