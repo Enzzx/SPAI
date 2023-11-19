@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmação de Emergência</title>
-    <link rel="stylesheet" type="text/css" href="confirmar-polic.css">
+    <link rel="stylesheet" type="text/css" href="confirmar-emerg.css">
+
 </head>
 <body>
+  <div id="container">
     <h1>Chamada de Emergência Confirmada</h1>
     <p>A polícia foi acionada e estará chegando ao destino em:</p>
-    <div id="tempoChegada">Calculando...</div>
+    <div id="tempoChegada">Procurando a unidade mais próxima...</div>
     
     <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
 		<div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div><script>(function () {
@@ -45,15 +47,14 @@ div.appendChild(text);
     to.parentNode.insertBefore(s, to);
   })();</script><a href="https://1map.com/pt/map-embed">1 Map</a></div>
 
-    <a href="../index.html">Voltar ao Início</a>
-
+    <a href="../../index.html">Voltar ao Início</a>
+  </div>
     <script>
-        // Simule a estimativa de tempo (em minutos) com base no GPS.
-        // Substitua esta lógica pela integração real com GPS, se disponível.
+
         setTimeout(function () {
             var tempoChegadaElement = document.getElementById("tempoChegada");
-            tempoChegadaElement.textContent = "10 minutos"; // Substitua pelo tempo real.
-        }, 3000); // Tempo de simulação de 3 segundos.
+            tempoChegadaElement.textContent = "10 minutos"; 
+        }, 3000); 
     </script>
 </body>
 </html>
