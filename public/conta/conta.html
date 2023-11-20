@@ -170,6 +170,7 @@
                 </aside>
             </section>
             <script>
+                let dados
                 window.onload = async () => {
                     const dados = sessionStorage.getItem('dadosUser')
                     
@@ -190,7 +191,7 @@
 
                 sair.addEventListener('click', () => {
                     sessionStorage.clear()
-                    document.cookie = 'deletar=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+                    document.cookie = 'userInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 
                     window.location.assign('https://spai.onrender.com')
                 })

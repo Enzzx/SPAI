@@ -6,7 +6,7 @@ cep.addEventListener('input', async (e) => {
     cepValue.replace(/\D/g, '');
 
     if (cepValue.length > 8) {
-        e.value = cepValue.slice(0, 8);
+        cepValue = cepValue.slice(0, 8);
     }
 
     if (cepValue.length === 8) {
