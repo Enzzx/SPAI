@@ -1,11 +1,10 @@
-const { response } = require("express")
-
 const cadastrar = document.forms[0]
 const cep = document.querySelector("#zipCode")
 
 cep.addEventListener('input', async (e) => {
     const cepValue = e.target.value
 
+    inputCEP(cepValue);
     if (cepValue.length === 8) {
         try {
             const request = await fetch(`https://viacep.com.br/ws/${cepValue}/json`)
@@ -137,18 +136,6 @@ cpfInput.addEventListener('input', function () {
     inputCPF(cpfInput);
 });
 
-function inputCEP(input) {
-    let numero = input.value.replace(/\D/g, '');
-
-    if (numero.length > 8) {
-        input.value = numero.slice(0, 8);
-    }
-}
-// Adiciona um ouvinte de evento para limitar enquanto digita
-let zipCodeInput = document.getElementById('zipCode');
-zipCodeInput.addEventListener('input', function () {
-    inputCEP(zipCodeInput);
-});
 
 function formatarTelefone(input) {
     let numero = input.value.replace(/\D/g, '');
@@ -163,4 +150,13 @@ function formatarTelefone(input) {
     }
 
     input.value = formatacao;
+}
+
+// Adiciona um ouvinte de evento para limitar enquanto digita
+function inputCEP(input) {
+    let numero = input.value.replace(/\D/g, '');
+
+    if (numero.length > 8) {
+        input.value = numero.slice(0, 8);
+    }
 }
