@@ -288,7 +288,11 @@ form > button a {
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 450px) {
+    .contaienr {
+        max-height: 85vh;
+        height: auto;
+    }
     .input-group {
         padding-right: 0;
     }
