@@ -24,15 +24,24 @@
         <label for="outro">Outro</label><br>
         <br>
 
-        <button type="submit">Confirmar Chamada</button>
+        <button type="submit" onclick="validateForm(event)">Confirmar Chamada</button>
     </form>
         
     <a href="../../index.html" id="resetForm">Voltar ao Início</a>
 
     <script>
-        document.getElementById("resetForm").addEventListener("click", function () {
-            document.getElementById("ambulanceForm").reset();
-        });
+       function validateForm(event) {
+            event.preventDefault();
+            // Verifica se pelo menos uma opção foi selecionada
+            var motivoSelecionado = document.querySelector('input[name="motivo"]:checked');
+            if (!motivoSelecionado) {
+                alert("Selecione um motivo antes de confirmar a chamada.");
+                return false; // Impede o envio do formulário se nenhum motivo for selecionado
+            }
+            // Se um motivo foi selecionado, redirecione para a próxima página
+            window.location.assign("https://spai.onrender.com/public/emergencia/confirmacaoEmerg/confirmar-ambu.html");
+            return false; // Isso impede o envio padrão do formulário
+        }
     </script>
 </body>
 </html>

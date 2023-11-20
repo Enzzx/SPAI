@@ -109,56 +109,56 @@
         <form>
             <section class="data-box">
                 <div class="input-box">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome">
+                    <h3>Nome:</h3>
+                    <p id="nome"></p>
                 </div>
                 <div class="input-box">
-                    <label for="nomeTrust">Nome de confiança:</label>
-                    <input type="text" id="nomeTrust">
+                    <h3>Nome de confiança:</h3>
+                    <p id="nomeTrust"></p>
                 </div>
                 <div class="input-box">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email">
+                    <h3>Email</h3>
+                    <p id="email"></p>
                 </div>
                 <div class="input-box">
-                    <label for="emailTrust">Email de confiança:</label>
-                    <input type="email" id="emailTrust">
+                    <h3>Email de confiança:</h3>
+                    <p id="emailTrust"></p>
                 </div>
                 <div class="input-box">
-                    <label for="cell">Celular:</label>
-                    <input type="tel" id="cell">
+                    <h3>Celular:</h3>
+                    <p id="cell"></p>
                 </div>
                 <div class="input-box">
-                    <label for="cellTrust">Celular de confiança:</label>
-                    <input type="tel" id="cellTrust">
+                    <h3>Celular de confiança:</h3>
+                    <p id="cellTrust"></p>
                 </div>
                 <div class="input-box">
-                    <label for="cpf">CPF:</label>
-                    <input type="number" id="cpf">
+                    <h3>CPF:</h3>
+                    <p id="cpf"></p>
                 </div>
                 <div class="input-box">
-                    <label for="conven">Convênio:</label>
-                    <input type="text" id="conven">
+                    <h3>Convênio:</h3>
+                    <p id="convenio"></p>
                 </div>
                 <div class="input-box">
-                    <label for="cep">CEP:</label>
-                    <input type="number" id="cep">
+                    <h3>CEP:</h3>
+                    <p id="cep"></p>
                 </div>
                 <div class="input-box">
-                    <label for="endereco">Endereço:</label>
-                    <input type="text" id="endereco">
+                    <h3>Endereço</h3>
+                    <p id="endereco"></p>
                 </div>
                 <div class="input-box">
-                    <label for="numero">Número de residência:</label>
-                    <input type="number" id="numero">
+                    <h3>Número da residência:</h3>
+                    <p id="numero"></p>
                 </div>
                 <div class="input-box">
-                    <label for="complemento">Complemento:</label>
-                    <input type="text" id="complemento">
+                    <h3>Complemento:</h3>
+                    <p id="complemento"></p>
                 </div>
                 <div class="input-box">
-                    <label for="nasc">Data de nascimento:</label>
-                    <input type="date" id="nasc">
+                    <h3>Data de nascimento</h3>
+                    <p id="nasac"></p>
                 </div>
             </section>
             <section class="button-box">
@@ -170,6 +170,9 @@
             </section>
             <script>
                 const dados = sessionStorage.getItem('dadosUser')
+                if (dados == null) {
+                    window.location.assign('https://spai.onrender.com/public/login/login.html')
+                }
                 const id = dados.id
 
 

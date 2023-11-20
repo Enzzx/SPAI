@@ -5,7 +5,7 @@
   <title>SPAI</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="public/style.css">
+  <link rel="stylesheet" href="public/index/style.css">
   <script src="https://kit.fontawesome.com/379f99bab9.js" crossorigin="anonymous"></script>
 </head>
 
@@ -135,77 +135,8 @@
           d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z">
         </path>
       </svg></a>
-
   </div>
-  <script>
-    window.onload = async () => {
-      conbsole.log('iniciar verificação de dados')
-      let userInfo = getCookie("userInfo")
-
-      if (userInfo !== undefined) {
-        console.log('tem cookies')
-        const dados = sessionStorage.getItem('dadosUser')
-        if (dados !== null) {
-          userInfo = JSON.stringify(userInfo)
-          let date = new Date()
-          date.setDate(date.getDate() + 7)
-          document.cookie = `userInfo=${userInfo}; expires=${date.toUTCString()}; SameSite=Strict; path=/`
-          console.log('já tem dados na session, sem necessidade de verificação do token')
-
-          const button = document.querySelector(".right")
-            button.innerHTML = '<i class="fa-solid fa-user" style="color: #AB6517;"></i>Conta'
-            button.href = 'public/conta/conta.html'
-
-        } else {
-          userInfo = JSON.parse(decodeURIComponent(userInfo))
-          console.log(userInfo)
-
-          const head = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${userInfo.token}` }
-          }
-
-          try {
-            const getAcc = await fetch('/getAccount', head)
-            const resAcc = await getAcc.json()
-
-            if (resAcc.has) {
-              let dadosUser = resAcc.dados
-              dadosUser = JSON.stringify(dadosUser)
-              console.log(resAcc.message)
-
-
-              sessionStorage.setItem('dadosUser', dadosUser)
-              userInfo = JSON.stringify(userInfo)
-              let date = new Date()
-              date.setDate(date.getDate() + 7)
-              document.cookie = `userInfo=${userInfo}; expires=${date.toUTCString()}; SameSite=Strict; path=/`
-
-              const button = document.querySelector(".right")
-              button.innerHTML = '<i class="fa-solid fa-user" style="color: #AB6517;"></i>Conta'
-              button.href = 'public/conta/conta.html'
-            } else {
-              console.log('erro na verificação do token, fazer login')
-            }
-          } catch (err) {
-            console.error(err)
-          }
-        }
-      } else {
-        return console.log('não tem cookies', userInfo)
-      }
-    }
-
-    function getCookie(cookieName) {
-      const cookies = document.cookie.split('; ')
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].split('=')
-        if (cookie[0] === cookieName) {
-          return cookie[1]
-        }
-      }
-    }
-  </script>
+  <script src="public/index/script.js"></script>
 </body>
 
 </html>

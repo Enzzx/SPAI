@@ -26,7 +26,7 @@
         <label for="outro">Outro</label><br>
         <br>
 
-        <button type="submit">Confirmar Chamada</button>
+        <button type="submit" onclick="validateForm(event)">Confirmar Chamada</button>
     </form>
 
     <a href="../../index.html" id="resetForm">Voltar ao Início</a>
@@ -41,7 +41,7 @@
                 return false; // Impede o envio do formulário se nenhum motivo for selecionado
             }
             // Se um motivo foi selecionado, redirecione para a próxima página
-            window.location.href = "public\confirmacaoEmerg\confirmar-polic.html";
+            window.location.assign("https://spai.onrender.com/public/emergencia/confirmacaoEmerg/confirmar-bomb.html");
             return false; // Isso impede o envio padrão do formulário
         }
     </script>

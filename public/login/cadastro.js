@@ -1,3 +1,5 @@
+const { response } = require("express")
+
 const cadastrar = document.forms[0]
 const cep = document.querySelector("#zipCode")
 
@@ -60,7 +62,7 @@ cadastrar.addEventListener('submit', async (e) => {
                 responseP.textContent = result.message
 
             } else {
-                console.log(result.message)
+                responseP.textContent = result.message
                 if (result.created) {
                     console.log('login automático')
                     data = { email, password }
@@ -87,7 +89,7 @@ cadastrar.addEventListener('submit', async (e) => {
                                 document.cookie = `userInfo=${userInfo}; expires=${date.toUTCString()}; SameSite=Strict; path=/`
                                 window.location.assign('https://spai.onrender.com/')
                             } else {
-                                console.log('login automático falhou')
+                                responseP.textContent = 'problema no autoLogin, acesse a tela de login'
                             }
                         } catch (err) {
                             console.error(err)

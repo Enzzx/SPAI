@@ -54,7 +54,10 @@ body {
     color: #000;
 }
 
-.tooltip:hover .info {
+.info:hover {
+    display: block;
+}
+.tooltip > label:hover .info {
     display: block;
 }
 .container {
@@ -141,6 +144,7 @@ form {
 }
 
 .input-box {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
@@ -234,6 +238,10 @@ form > button a {
     body {
         font-size: 16px;
     }
+
+    h1 {
+        font-size: 1.5em;
+    }
     
     /* Ajuste do tamanho do formulário */
     .form {
@@ -277,5 +285,11 @@ form > button a {
 
     .gender-input {
         margin-top: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .input-group {
+        padding-right: 0;
     }
 }

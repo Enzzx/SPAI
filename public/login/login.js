@@ -32,7 +32,7 @@ document.forms[0].addEventListener('submit', async (e) => {
 
             window.location.assign("https://spai.onrender.com")
         } else {
-            console.log(result.message)
+            document.querySelector(".response.p").textContent = result.message
         }
     } catch (err) {
         console.error(err)

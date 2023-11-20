@@ -83,7 +83,7 @@ app.post('/logIn', async (req, res) => {
             console.log('este usuário não existe')
 
             const response = {
-                message: 'usário inexistente',
+                message: 'senha ou email incorretos',
                 log: false
             }
             return res.status(401).json(response)
