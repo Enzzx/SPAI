@@ -1,5 +1,5 @@
 window.onload = async () => {
-    conbsole.log('iniciar verificação de dados')
+    console.log('iniciar verificação de dados')
     let userInfo = getCookie("userInfo")
 
     if (userInfo !== undefined) {
