@@ -25,7 +25,7 @@ app.use(express.static(__dirname))
 app.post('/register', async (req, res) => {
     const data = req.body
     const registerExists = "SELECT * FROM cadastro WHERE email = $1;"
-    const doRegister = "INSERT INTO cadastro (nome, nometrust, nasc, email, emailtrust, cell, celltrust, cpf, conven, cep, numero, complemento, senha, imgbase) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);"
+    const doRegister = "INSERT INTO cadastro (nome, nometrust, email, emailtrust, cell, celltrust, cpf, conven, cep, numero, complemento, senha, nasc, imgbase) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);"
 
     const name = data.name
     const nameTrusted = data.nameTrusted
@@ -49,11 +49,12 @@ app.post('/register', async (req, res) => {
             console.log("usuário já existe")
 
             const response = {
-                message: 'tente outro email'
+                message: 'tente outro email',
+                exists: true
             }
             return res.status(401).json(response)
         }
-        const register = await pool.query(doRegister, [name, nameTrusted, birthDate, email, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, url])
+        const register = await pool.query(doRegister, [name, nameTrusted, email, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, birthDate, url])
 
         console.log(register)
         const response = {
@@ -128,6 +129,22 @@ app.post('/getAccount', async (req, res) => {
     }
 
 
+})
+
+app.delete('/apagar', async (req, res) => {
+    const id = req.body.id
+    const deleteQuery = "DELETE FROM cadastro WHERE id = $1;"
+
+    try {
+        const deleted = await pool.query(deleteQuery, [id])
+
+        const response = {
+            message: 'conta deletada com sucesso'
+        }
+        res.status(200).json(response)
+    } catch (err) {
+        console.log(err)
+    }
 })
 
 app.listen(port, (err) => {
