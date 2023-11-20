@@ -170,16 +170,14 @@
                 </aside>
             </section>
             <script>
-                let dados
                 window.onload = async () => {
                     const dados = sessionStorage.getItem('dadosUser')
                     
                     if (dados == null) {
                         window.location.assign('https://spai.onrender.com/public/login/login.html')
                     }
-
-                    return dados
                 }
+                const dados = sessionStorage.getItem('dadosUser')
                 console.log(dados)
                 const id = dados.id
 
