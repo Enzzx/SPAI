@@ -187,15 +187,8 @@ form > button a {
     color: #fff;
 }
 
-.box-result {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    background-color: green;
-    width: 200px;
-    height: 100px;
+.response-p {
+    margin: 1em 0;
 }
 .visible {
     display: inline-block;
@@ -206,7 +199,6 @@ form > button a {
     
     .container {
         width: 90%;
-        height: auto;
     }
 
     .form-image {
