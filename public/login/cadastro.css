@@ -226,9 +226,6 @@ form > button a {
         padding: 3rem 2rem;
         max-height: 40em;
     }
-    .input-group {
-        overflow-y: scroll;
-    }
     
 }
 
@@ -263,7 +260,6 @@ form > button a {
         flex-direction: column;
         z-index: 5;
         padding-right: 3rem;
-        max-height: 10rem;
         flex-wrap: nowrap;
     }
 

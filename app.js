@@ -25,7 +25,7 @@ app.use(express.static(__dirname))
 app.post('/register', async (req, res) => {
     const data = req.body
     const registerExists = "SELECT * FROM cadastro WHERE email = $1;"
-    const doRegister = "INSERT INTO cadastro (nome, nometrust, email, emailtrust, cell, celltrust, cpf, conven, cep, numero, complemento, senha, nasc, imgbase) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);"
+    const doRegister = "INSERT INTO cadastro (nome, nometrust, email, emailtrust, cell, celltrust, cpf, conven, cep, numero, complemento, senha, nasc) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13);"
 
     const name = data.name
     const nameTrusted = data.nameTrusted
@@ -40,7 +40,6 @@ app.post('/register', async (req, res) => {
     const houseNumber = data.houseNumber
     const complement = data.complement
     const password = data.password
-    const url = data.url
 
     try {
         const verify = await pool.query(registerExists, [email])
@@ -54,7 +53,7 @@ app.post('/register', async (req, res) => {
             }
             return res.status(401).json(response)
         }
-        const register = await pool.query(doRegister, [name, nameTrusted, email, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, birthDate, url])
+        const register = await pool.query(doRegister, [name, nameTrusted, email, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, birthDate])
 
         console.log(register)
         const response = {

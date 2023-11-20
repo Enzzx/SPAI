@@ -45,20 +45,6 @@
                         <input id="birthdate" type="date" name="birthdate" max="" onblur="validarData(this)" required>
                     </div>
 
-                    <script>
-                        function validarData(input) {
-                            let dataAtual = new Date();
-                            let dataInserida = new Date(input.value);
-
-                            if (dataInserida > dataAtual) {
-                                alert("Data de nascimento não pode ser no futuro.");
-                                input.value = '';
-                            }
-                        }
-
-                        document.getElementById('birthdate').max = new Date().toISOString().split('T')[0];
-                    </script>
-
                     <div class="input-box">
                         <label for="email">E-mail</label>
                         <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
@@ -130,62 +116,13 @@
                     </div>
                 </div>
 
-                <p class="response-p">ff</p>
+                <p class="response-p"></p>
 
                 <button id="cadastrar"><a href="#">Cadastrar</a></button>
                 
             </form>
         </div>
     </div>
-    
-    <script>
-        function inputCPF(input) {
-            let numero = input.value.replace(/\D/g, '');
-
-            if (numero.length > 11) {
-                input.value = numero.slice(0, 11);
-            }
-        }
-
-        // Adiciona um ouvinte de evento para limitar enquanto digita
-        let cpfInput = document.getElementById('cpf');
-        cpfInput.addEventListener('input', function () {
-            inputCPF(cpfInput);
-        });
-    </script>
-
-    <script>
-        function inputCEP(input) {
-            let numero = input.value.replace(/\D/g, '');
-
-            if (numero.length > 8) {
-                input.value = numero.slice(0, 8);
-            }
-        }
-        // Adiciona um ouvinte de evento para limitar enquanto digita
-        let zipCodeInput = document.getElementById('zipCode');
-        zipCodeInput.addEventListener('input', function () {
-            inputCEP(zipCodeInput);
-        });
-    </script>
-
-    <script>
-        function formatarTelefone(input) {
-            let numero = input.value.replace(/\D/g, '');
-            let formatacao;
-
-            if (numero.length <= 2) {
-                formatacao = `(${numero}`;
-            } else if (numero.length <= 7) {
-                formatacao = `(${numero.slice(0, 2)}) ${numero.slice(2)}`;
-            } else {
-                formatacao = `(${numero.slice(0, 2)}) ${numero.slice(2, 7)}-${numero.slice(7, 11)}`;
-            }
-
-            input.value = formatacao;
-        }
-    </script>
     <script src="cadastro.js"></script>
-
 </body>
 </html>
