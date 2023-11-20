@@ -2,9 +2,13 @@ const cadastrar = document.forms[0]
 const cep = document.querySelector("#zipCode")
 
 cep.addEventListener('input', async (e) => {
-    const cepValue = e.target.value
+    let cepValue = e.target.value
+    cepValue.replace(/\D/g, '');
 
-    inputCEP(cepValue);
+    if (cepValue.length > 8) {
+        e.value = cepValue.slice(0, 8);
+    }
+
     if (cepValue.length === 8) {
         try {
             const request = await fetch(`https://viacep.com.br/ws/${cepValue}/json`)
@@ -40,6 +44,7 @@ cadastrar.addEventListener('submit', async (e) => {
     const complement = document.querySelector("#complement").value
     const password = document.querySelector("#password").value
     const confirmPass = document.querySelector("#confirmPassword").value
+    const responseP = document.querySelector(".response-p")
 
     if (password == confirmPass) {
         let data = { name, nameTrusted, birthDate, email, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password }
@@ -53,7 +58,6 @@ cadastrar.addEventListener('submit', async (e) => {
         try {
             const requisition = await fetch('/register', head)
             const result = await requisition.json()
-            const responseP = document.querySelector(".response-p")
 
             if (result.exists) {
                 document.querySelector("#email").style.backgroundColor = "#fdd3c4";
@@ -62,6 +66,7 @@ cadastrar.addEventListener('submit', async (e) => {
 
             } else {
                 responseP.textContent = result.message
+                console.log(result)
                 if (result.created) {
                     console.log('login automático')
                     data = { email, password }
@@ -107,6 +112,7 @@ cadastrar.addEventListener('submit', async (e) => {
 
     } else {
         document.querySelector("#confirmPassword").style.backgroundColor = "#fdd3c4";
+        responseP.textContent = 'Corrija a confirmaão de senha'
     }
 })
 
@@ -150,13 +156,4 @@ function formatarTelefone(input) {
     }
 
     input.value = formatacao;
-}
-
-// Adiciona um ouvinte de evento para limitar enquanto digita
-function inputCEP(input) {
-    let numero = input.value.replace(/\D/g, '');
-
-    if (numero.length > 8) {
-        input.value = numero.slice(0, 8);
-    }
 }

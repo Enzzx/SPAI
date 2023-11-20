@@ -57,7 +57,7 @@ body {
 .info:hover {
     display: block;
 }
-.tooltip > label:hover .info {
+.tooltip > label:hover ~ .info {
     display: block;
 }
 .container {
