@@ -57,39 +57,52 @@ cadastrar.addEventListener('submit', (e) => {
             try {
                 const requisition = await fetch('/register', head)
                 const result = await requisition.json()
-                const boxResult = document.querySelector(".box-result")
                 const responseP = document.querySelector(".response-p")
 
-                console.log(result.message)
-                if (result.created) {
-                    console.log('login automático')
-                    data = { email, password }
-
-                    async function autoRegister() {
-                        try {
-                            const login = await fetch('/logIn', head)
-                            const loginResponse = await login.json()
-
-                            if (loginResponse.log) {
-                                const id = loginResponse.id
-                                const nome = loginResponse.name
-
-
-                                console.log(`login automatico realizado com sucesso, ${id} + ${nome}`)
-                                boxResult.classList.add('visible')
-                                responseP.textContent = "conta criada com sucesso"
-                            } else {
-                                console.log('login automático falhou')
-                            }
-                        } catch (err) {
-                            console.error(err)
-                        }
-                    }
-                    autoRegister()
+                if (result.exists) {
+                    document.querySelector("#email").style.backgroundColor = "#fdd3c4";
+                    document.querySelector("#email").placeholder = "email já em uso"
+                    responseP.textContent = result.message
 
                 } else {
-                    boxResult.classList.add('visible')
-                    responseP.textContent = result.message
+                    console.log(result.message)
+                    if (result.created) {
+                        console.log('login automático')
+                        data = { email, password }
+
+                        async function autoRegister() {
+                            try {
+                                const login = await fetch('/logIn', head)
+                                const loginResponse = await login.json()
+
+                                if (loginResponse.log) {
+                                    const token = loginResponse.token
+                                    const nome = loginResponse.name
+
+
+                                    console.log(`login automático realizado com sucesso`)
+
+                                    let userInfo = {
+                                        token: token,
+                                        nome: nome
+                                    }
+                                    userInfo = JSON.stringify(userInfo)
+                                    let date = new Date()
+                                    date.setDate(date.getDate() + 7)
+                                    document.cookie = `userInfo=${userInfo}; expires=${date.toUTCString()}; SameSite=Strict; path=/`
+                                    window.location.assign('https://spai.onrender.com/')
+                                } else {
+                                    console.log('login automático falhou')
+                                }
+                            } catch (err) {
+                                console.error(err)
+                            }
+                        }
+                        autoRegister()
+
+                    } else {
+                        responseP.textContent = result.message
+                    }
                 }
             } catch (err) {
                 if (err) throw err
