@@ -7,17 +7,11 @@
     <link rel="stylesheet" type="text/css" href="./styleEmerg.css">
 </head>
 <body>
-    
-      </div>
+    <div class="container"></div>
     <h1>Chamada de 🚓 Polícia</h1>
     <form id="policeForm" method="post">
         <label for="numeroEmergencia">Número de Emergência: 190</label>
-        <input type="tel" id="numeroEmergencia" name="numeroEmergencia" required>
-        <br><br>
-
-        <label for="nomeUnidade">Nome da Unidade Próxima: </label>
-        <input type="text" id="nomeUnidade" name="nomeUnidade" required>
-        <br><br>
+        <br>
 
         <label>Motivo da Chamada:</label><br>
         <input type="radio" id="acidente" name="motivo" value="Acidente">
@@ -30,10 +24,25 @@
         <label for="outro">Outro</label><br>
         <br>
 
-        <button type="submit">Confirmar Chamada</button>
+        <button onclick="validateForm(event)" type="submit">Confirmar Chamada</button>
     </form>
 
     <a href="../../index.html" id="resetForm">Voltar ao Início</a>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            // Verifica se pelo menos uma opção foi selecionada
+            var motivoSelecionado = document.querySelector('input[name="motivo"]:checked');
+            if (!motivoSelecionado) {
+                alert("Selecione um motivo antes de confirmar a chamada.");
+                return false; // Impede o envio do formulário se nenhum motivo for selecionado
+            }
+            // Se um motivo foi selecionado, redirecione para a próxima página
+            window.location.assign = "C:\Users\Marcos Mazzieri\Documents\SPAI-Main\public\confirmacaoEmerg\confirmar-polic.html";
+            return false; // Isso impede o envio padrão do formulário
+        }
+    </script>
 
 </body>
 </html>

@@ -6,6 +6,12 @@ body {
     text-align: center;
 }
 
+.container {
+    background-color: #f9a826;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 h1 {
     color: #333;
 }

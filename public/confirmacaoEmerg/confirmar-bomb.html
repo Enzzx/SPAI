@@ -4,22 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmação de Emergência</title>
-    <link rel="stylesheet" type="text/css" href="confirmar-bomb.css">
+    <link rel="stylesheet" type="text/css" href="confirmar-emerg.css">
 </head>
 <body>
+    <div id="container">
     <h1>Chamada de Emergência Confirmada</h1>
-    <p>O bombeiro foi acionado e estará chegando ao destino em:</p>
-    <div id="tempoChegada">Calculando...</div>
+    <p>O bombeiro foi acionada e estará chegando ao destino em:</p>
+    <div id="tempoChegada">Procurando a unidade mais próxima...</div>
+    
+    <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+		<div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div><script>(function () {
+        var setting = {"query":"Senac Lapa Tito - Rua Tito - Vila Romana, São Paulo - SP, Brasil","width":405,"height":397,"satellite":true,"zoom":19,"placeId":"ChIJT7BjVnf4zpQRCYNfAOk1OJI","cid":"0x923835e9005f8309","coords":[-23.5280936,-46.6918154],"lang":"pt","queryString":"Senac Lapa Tito - Rua Tito - Vila Romana, São Paulo - SP, Brasil","centerCoord":[-23.5280936,-46.6918154],"id":"map-9cd199b9cc5410cd3b1ad21cab2e54d3","embed_id":"1010849"};
+        var d = document;
+        var s = d.createElement('script');
+        s.src = 'https://1map.com/js/script-for-user.js?embed_id=1010849';
+        s.async = true;
+        s.onload = function (e) {
+          window.OneMap.initMap(setting)
+        };
+        const div = document.querySelector('#map-9cd199b9cc5410cd3b1ad21cab2e54d3');
+const text = document.createTextNode('Sua Localização');
+div.appendChild(text);
+        var to = d.getElementsByTagName('script')[0];
+        to.parentNode.insertBefore(s, to);
+      })();</script><a href="https://1map.com/pt/map-embed">Sua Localização</a></div>
 
-    <a href="../index.html">Voltar ao Início</a>
+<div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d4">
+    <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d4"></div><script>(function () {
+    var setting = {"query":"Posto de Bombeiros Osasco - R. Vitória Régia, 61 - Jardim das Flores, Osasco - SP, 06120-100, Brasil","width":405,"height":397,"satellite":true,"zoom":18,"placeId":"ChIJ_bhwK6f_zpQRMrnmT6SxJss","cid":"0xcb26b1a44fe6b932","coords":[-23.5391403,-46.78850639999999],"lang":"pt","queryString":"Posto de Bombeiros Osasco - R. Vitória Régia, 61 - Jardim das Flores, Osasco - SP, 06120-100, Brasil","centerCoord":[-23.5391403,-46.78850639999999],"id":"map-9cd199b9cc5410cd3b1ad21cab2e54d4","embed_id":"1010849"};
+    var d = document;
+    var s = d.createElement('script');
+    s.src = 'https://1map.com/js/script-for-user.js?embed_id=1010849';
+    s.async = true;
+    s.onload = function (e) {
+      window.OneMap.initMap(setting)
+    };
+    const div = document.querySelector('#map-9cd199b9cc5410cd3b1ad21cab2e54d4');
+const text = document.createTextNode('Localização da Emergência');
+div.appendChild(text);
+    var to = d.getElementsByTagName('script')[0];
+    to.parentNode.insertBefore(s, to);
+  })();</script><a href="https://1map.com/pt/map-embed">1 Map</a></div>
 
+    <a href="../../index.html">Voltar ao Início</a>
+</div>
     <script>
-        // Simule a estimativa de tempo (em minutos) com base no GPS.
-        // Substitua esta lógica pela integração real com GPS, se disponível.
+        
         setTimeout(function () {
             var tempoChegadaElement = document.getElementById("tempoChegada");
-            tempoChegadaElement.textContent = "10 minutos"; // Substitua pelo tempo real.
-        }, 3000); // Tempo de simulação de 3 segundos.
+            tempoChegadaElement.textContent = "17 minutos"; 
+        }, 3000); 
     </script>
 </body>
 </html>

@@ -19,7 +19,44 @@ body {
     align-items: center;
     background: #AB6517;
 }
+body {
+    background-color: #d8882d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
 
+.container {
+    background-color: #f9a826;
+    padding: 13px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(238, 117, 117, 0.1);
+}
+.question-mark {
+    cursor: pointer;
+    margin-left: 1px;
+    font-size: 1rem;
+    color: #f5b120;
+}
+
+/* Style the tooltip */
+.tooltip .info {
+    display: none;
+    position: absolute;
+    background-color: #fde3a7;
+    border: 1px solid #AB6517;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    font-size: 0.8em;
+    color: #000;
+}
+
+.tooltip:hover .info {
+    display: block;
+}
 .container {
     width: 80%;
     height: 85vh;
@@ -141,28 +178,8 @@ form {
     color: #000000c0;
 }
 
-
 .input-box input::placeholder {
     color: #000000be;
-}
-
-.gender-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.62rem;
-    padding: 0 .5rem;
-}
-
-
-
-.gender-input input {
-    margin-right: 0.35rem;
-}
-
-.gender-input label {
-    font-size: 0.81rem;
-    font-weight: 600;
-    color: #000000c0;
 }
 
 form > button {
@@ -193,7 +210,6 @@ form > button a {
 .visible {
     display: inline-block;
 }
-
 
 @media screen and (max-width: 1200px) {
     

@@ -1,20 +1,25 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+#container {
+  max-width: 400px; /* Ajuste o valor conforme necessário */
+  margin: 0 auto; /* Isso centraliza o contêiner na tela */
 }
 
 h1 {
-    color: #333;
-    text-align: center;
-    padding: 20px 0;
+  color: #333;
+  text-align: center;
+  padding: 20px 0;
 }
 
 p {
-    color: #666;
-    font-size: 1.2em;
-    text-align: center;
+  color: #666;
+  font-size: 1.2em;
+  text-align: center;
 }
 
 #tempoChegada {
