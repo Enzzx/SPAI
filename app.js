@@ -130,7 +130,7 @@ app.post('/getAccount', async (req, res) => {
 
 })
 
-app.delete('/apagar', async (req, res) => {
+app.delete('/deleteAcc', async (req, res) => {
     const id = req.body.id
     const deleteQuery = "DELETE FROM cadastro WHERE id = $1;"
 

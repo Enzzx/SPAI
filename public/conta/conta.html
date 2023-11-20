@@ -67,6 +67,7 @@
             padding: 1em 2em;
         }
         .input-box {
+            flex: 30%;
             display: flex;
             flex-direction: column;
             transform: scale(0.9);
@@ -169,10 +170,16 @@
                 </aside>
             </section>
             <script>
-                const dados = sessionStorage.getItem('dadosUser')
-                if (dados == null) {
-                    window.location.assign('https://spai.onrender.com/public/login/login.html')
+                window.onload = async () => {
+                    const dados = sessionStorage.getItem('dadosUser')
+                    
+                    if (dados == null) {
+                        window.location.assign('https://spai.onrender.com/public/login/login.html')
+                    }
+
+                    return dados
                 }
+                console.log(dados)
                 const id = dados.id
 
 
@@ -180,6 +187,14 @@
                 const sair = document.querySelector("#sair")
                 const excluir = document.querySelector("#excluir")
                 
+
+                sair.addEventListener('click', () => {
+                    sessionStorage.clear()
+                    document.cookie = 'deletar=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+
+                    window.location.assign('https://spai.onrender.com')
+                })
+
                 excluir.addEventListener('click', async () => {
                     const head = {
                         method: 'DELETE',
@@ -188,10 +203,10 @@
                     }
 
                     try {
-                        const deleting = await fetch('/apagar', head)
+                        const deleting = await fetch('/deleteAcc', head)
                         const deleted = await deleting.json()
 
-                        console.log(deleted.message)
+                        document.querySelector("#container").innerHTML = deleted.message
                     } catch (err) {
                         console.log(err)
                     }
