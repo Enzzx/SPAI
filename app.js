@@ -158,7 +158,7 @@ app.post('/chamada', async (req, res) => {
     try {
         const store = await pool.query(query, [usuario_id, nome, localizacao, orgao, motivo])
 
-        res.status(200)
+        res.status(200).json({ message: 'chamada armazenada' })
     } catch (err) {
         console.log(err)
     }

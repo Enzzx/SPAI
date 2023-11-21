@@ -64,7 +64,7 @@
                     const chamando = await fetch('/chamada', head)
                     const chamada = await chamando.json()
 
-                    console.log('chamada armazenada')
+                    console.log(chamada.message)
 
                     window.location.assign("https://spai.onrender.com/public/emergencia/confirmacaoEmerg/confirmar-ambu.html");
                 } catch (err) {
