@@ -130,7 +130,7 @@ app.post('/getAccount', async (req, res) => {
 })
 
 app.delete('/deleteAcc', async (req, res) => {
-    const id = req.body.id
+    const id = req.query.id
     const deleteQuery = "DELETE FROM cadastro WHERE id = $1;"
 
     try {
@@ -143,6 +143,26 @@ app.delete('/deleteAcc', async (req, res) => {
     } catch (err) {
         console.log(err)
     }
+})
+
+app.post('/chamada', async (req, res) => {
+    const data = req.body
+    
+    const usuario_id = data.id
+    const nome = data.nome
+    const localizacao = data.localizacao
+    const orgao = data.orgao
+    const motivo = data.motivo
+    const query = "INSERT INTO chamadas (usuario_id, nome, localizacao, orgao, motivo) VALUES ($1, $2, $3, $4, $5);"
+
+    try {
+        const store = await pool.query(query, [usuario_id, nome, localizacao, orgao, motivo])
+
+        res.status(200)
+    } catch (err) {
+        console.log(err)
+    }
+
 })
 
 app.listen(port, (err) => {

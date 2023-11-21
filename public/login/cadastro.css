@@ -122,18 +122,14 @@ form {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.1s ease;
-}
-
-.form-header button:hover {
-    background-color: #f9a826;
-}
-
-.form-header a button {
     text-decoration: none;
     font-weight: 500;
     color: #fff;
 }
 
+.form-header button:hover {
+    background-color: #f9a826;
+}
 
 .input-group {
     display: flex;
@@ -174,13 +170,6 @@ form {
     color: #777;
   }
   
-
-.input-box label,
-.gender-inputs h6 {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #000000c0;
-}
 
 .input-box input::placeholder {
     color: #000000be;
@@ -245,6 +234,7 @@ form > button a {
     
     /* Ajuste do tamanho do formulário */
     .form {
+        flex: 100%;
         padding: 1rem;
     }
     
@@ -256,9 +246,6 @@ form > button a {
         display: none;
     }
 
-    .form {
-        flex: 100%;
-    }
     form {
         width: 90%;
         max-width: 550px;
@@ -269,22 +256,6 @@ form > button a {
         z-index: 5;
         padding-right: 3rem;
         flex-wrap: nowrap;
-    }
-
-    .gender-inputs {
-        margin-top: 2rem;
-    }
-
-    .gender-group {
-        flex-direction: column;
-    }
-
-    .gender-title h6 {
-        margin: 0;
-    }
-
-    .gender-input {
-        margin-top: 0.5rem;
     }
 }
 

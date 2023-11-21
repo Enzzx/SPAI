@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chamada de 🚑 Ambulância</title>
     <link rel="stylesheet" type="text/css" href="./styleEmerg.css">
 </head>
+
 <body>
     <div class="container"></div>
     <h1>Chamada de 🚑 Ambulância</h1>
@@ -26,22 +28,53 @@
 
         <button type="submit" onclick="validateForm(event)">Confirmar Chamada</button>
     </form>
-        
+
     <a href="../../index.html" id="resetForm">Voltar ao Início</a>
 
     <script>
-       function validateForm(event) {
+        let conectado = false
+        const dados = sessionStorage.getItem('dadosUser')
+        if (dados !== null) {
+            conectado = true
+        }
+
+        async function validateForm(event) {
             event.preventDefault();
-            // Verifica se pelo menos uma opção foi selecionada
-            var motivoSelecionado = document.querySelector('input[name="motivo"]:checked');
-            if (!motivoSelecionado) {
-                alert("Selecione um motivo antes de confirmar a chamada.");
-                return false; // Impede o envio do formulário se nenhum motivo for selecionado
+
+            let motivoSelecionado = document.querySelector('input[name="motivo"]:checked');
+            if (conectado) {
+                if (!motivoSelecionado) {
+                    alert("Selecione um motivo antes de confirmar a chamada.");
+                    return false;
+                }
+
+                const data = {
+                    id: dados.id,
+                    nome: dados.nome,
+                    localizacao: dados.cep,
+                    orgao: 'ambulância',
+                    motivo: motivoSelecionado.value
+                }
+                const head = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                }
+
+                try {
+                    const chamando = await fetch('/chamada', head)
+                    const chamada = await chamando.json()
+
+                    window.location.assign("https://spai.onrender.com/public/emergencia/confirmacaoEmerg/confirmar-ambu.html");
+                } catch (err) {
+                    if (err) throw err
+                    console.log('não foi possível armazenar os dados da chamada')
+                }
+            } else {
+                console.log('você não está conectado')
             }
-            // Se um motivo foi selecionado, redirecione para a próxima página
-            window.location.assign("https://spai.onrender.com/public/emergencia/confirmacaoEmerg/confirmar-ambu.html");
-            return false; // Isso impede o envio padrão do formulário
         }
     </script>
 </body>
+
 </html>

@@ -37,11 +37,12 @@
             background: #dddddd;
             box-shadow: #00000036 5px 5px 10px;
         }
-        #container > section {
+
+        #container>section {
             background-color: #ffeeda;
-            margin-bottom: 1em;
             padding: 1em 0;
         }
+
         img {
             display: block;
             flex: 30%;
@@ -50,6 +51,8 @@
             margin: auto;
             border-radius: 50px;
         }
+
+        main,
         form {
             flex: 70%;
             display: flex;
@@ -58,6 +61,11 @@
             align-items: center;
             overflow-y: auto;
         }
+
+        form {
+            display: none;
+        }
+
         .data-box {
             flex: 70%;
             display: flex;
@@ -66,7 +74,8 @@
             gap: 20px;
             padding: 1em 2em;
         }
-        .input-box {
+
+        .content-box {
             flex: 30%;
             display: flex;
             flex-direction: column;
@@ -79,13 +88,150 @@
             width: 100%;
             padding: 1em 3em;
         }
+
         .button-box button {
-            background-color: #c37a0c;
-            margin: 1em 0.5em;
-            padding: 4px 12px;
-            border: none;
+            background-color: #AB6517;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
             border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            transition: 0.1s ease;
         }
+
+        .button-box button:hover {
+            background-color: #f9a826;
+        }
+
+
+
+        /* - - -  formulário  - - - */
+        .question-mark {
+            cursor: pointer;
+            margin-left: 1px;
+            font-size: 1rem;
+            color: #f5b120;
+        }
+
+        /* Style the tooltip */
+        .tooltip .info {
+            display: none;
+            position: absolute;
+            background-color: #fde3a7;
+            border: 1px solid #AB6517;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1;
+            font-size: 0.8em;
+            color: #000;
+        }
+
+        .info:hover {
+            display: block;
+        }
+
+        .tooltip>label:hover~.info {
+            display: block;
+        }
+
+        form {
+            padding: 1.5em 3em;
+            overflow-y: auto;
+        }
+
+        .form-header {
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-header h1 {
+            position: relative;
+            padding-top: 1em;
+        }
+
+        .form-header h1::after {
+            content: '';
+            display: block;
+            width: 5rem;
+            height: 0.3rem;
+            background-color: #AB6517;
+            margin: 0 auto;
+            position: absolute;
+            border-radius: 10px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 1rem 0;
+            gap: 5px;
+        }
+
+        .input-box {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+
+        .input-box input {
+            margin: 0.4rem 0;
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 1px 1px 6px #0000001c;
+            font-size: 0.8rem;
+        }
+
+        .input-box input:hover {
+            background-color: #eeeeee75;
+        }
+
+        .input-box input:focus-visible {
+            background-color: #fde3a7d7;
+            outline: 1px solid;
+        }
+
+        .input-box input::placeholder {
+            color: #000000be;
+        }
+
+        .info {
+            display: none;
+            font-size: 0.8em;
+            color: #777;
+        }
+
+
+        form button {
+            border: none;
+            background-color: #AB6517;
+            padding: 0.62rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.1s ease;
+            text-decoration: none;
+            font-size: 0.93rem;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        form button:hover {
+            background-color: #f9a826;
+        }
+
+        form>aside {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
 
 
         @media screen and (max-width: 550px) {
@@ -95,7 +241,8 @@
                 gap: 5px;
                 padding: 2em 0em;
             }
-            .input-box {
+
+            .content-box {
                 transform: scale(0.7);
             }
         }
@@ -104,115 +251,270 @@
 
 <body>
     <div id="container">
-        <section>  
-            <img src="https://media.licdn.com/dms/image/C5603AQFY4hvNCGkltg/profile-displayphoto-shrink_400_400/0/1629093471093?e=2147483647&v=beta&t=Gwd1iXD7RafRbcI4jP12pBzdWEaLXbnKI6FLjXlmvKc" alt="">
+        <section>
+            <img src="https://media.licdn.com/dms/image/C5603AQFY4hvNCGkltg/profile-displayphoto-shrink_400_400/0/1629093471093?e=2147483647&v=beta&t=Gwd1iXD7RafRbcI4jP12pBzdWEaLXbnKI6FLjXlmvKc"
+                alt="">
         </section>
-        <form>
+        <form autocomplete="off">
+            <div class="form-header">
+                <h1 id="titulo">Editar conta</h1>
+            </div>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="name">Nome e Sobrenome</label>
+                    <input id="name" class="nome" type="text" name="name" placeholder="Digite seu nome" required>
+                </div>
+
+                <div class="input-box tooltip">
+                    <label for="nameTrusted">Nome de Confiança<span class="question-mark">&#128712;</span></label>
+                    <input id="nameTrusted" class="nometrust" type="text" name="nameTrusted"
+                        placeholder="Digite o nome de confiança" required>
+
+                    <div class="info">
+                        <I>Informe o nome de alguém que você confie.</I>
+                    </div>
+
+                </div>
+
+                <div class="input-box">
+                    <label for="birthdate">Data de nascimento</label>
+                    <input id="birthdate" class="nasc" type="date" name="birthdate" max="" onblur="validarData(this)"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <label for="email">E-mail</label>
+                    <input id="email" class="email" type="email" name="email" placeholder="Digite seu e-mail" required>
+                </div>
+
+                <div class="input-box tooltip">
+                    <label for="emailTrusted">E-mail de confiança<span class="question-mark">&#128712;</span></label>
+                    <input id="emailTrusted" class="emailtrust" type="email" name="emailTrusted"
+                        placeholder="Digite o e-mail de confiança" required>
+
+                    <div class="info">
+                        Informe o e-mail de alguém que você confie.
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label for="number">Celular</label>
+                    <input id="number" class="cell" type="tel" name="number" placeholder="(xx) xxxxx-xxxx"
+                        oninput="formatarTelefone(this)" required>
+                </div>
+
+                <!-- Add a question mark icon next to the labels -->
+                <div class="input-box tooltip">
+                    <label for="trustedCell">Celular de confiança <span class="question-mark">&#128712;</span></label>
+                    <input id="trustedCell" class="celltrust" type="tel" name="trustedCell"
+                        placeholder="(xx) xxxxx-xxxx" oninput="formatarTelefone(this)" required>
+                    <!-- Add a tooltip element with additional information -->
+                    <div class="info">
+                        Informe o número do celular de alguém que você confie.
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label for="cpf">CPF</label>
+                    <input id="cpf" class="cpf" type="number" name="cpf" placeholder="Digite seu CPF"
+                        oninput="inputCPF(this, 11)" pattern="\d{11}" title="Digite um CPF válido" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="healthcare">Convênio</label>
+                    <input id="healthcare" class="conven" type="text" name="healthcare"
+                        placeholder="Convênio (opcional)">
+                </div>
+
+                <div class="input-box">
+                    <label for="zipCode">CEP</label>
+                    <input id="zipCode" class="cep" type="number" name="zipCode" placeholder="Digite o CEP"
+                        pattern="\d{8}" title="Digite um CEP válido" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="address">Endereço</label>
+                    <input id="address" type="text" name="address" placeholder="Digite seu endereço" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="houseNumber">Número de Residência</label>
+                    <input id="houseNumber" class="numero" type="text" name="houseNumber"
+                        placeholder="Digite o número da residência" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="complement">Complemento</label>
+                    <input id="complement" class="complemento" type="text" name="complement"
+                        placeholder="Complemento (opcional)">
+                </div>
+
+                <div class="input-box">
+                    <label for="password">Senha</label>
+                    <input id="password" class="senha" type="password" name="password" placeholder="Digite sua senha"
+                        required>
+                </div>
+            </div>
+            <aside>
+                <button id="cancelar" type="button"><a>Cancelar</a></button>
+                <button id="atualizar"><a>Atualizar</a></button>
+            </aside>
+        </form>
+        <main>
             <section class="data-box">
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Nome:</h3>
-                    <p id="nome"></p>
+                    <p class="nome"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Nome de confiança:</h3>
-                    <p id="nomeTrust"></p>
+                    <p class="nometrust"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Email</h3>
-                    <p id="email"></p>
+                    <p class="email"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Email de confiança:</h3>
-                    <p id="emailTrust"></p>
+                    <p class="emailtrust"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Celular:</h3>
-                    <p id="cell"></p>
+                    <p class="cell"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Celular de confiança:</h3>
-                    <p id="cellTrust"></p>
+                    <p class="celltrust"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>CPF:</h3>
-                    <p id="cpf"></p>
+                    <p class="cpf"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Convênio:</h3>
-                    <p id="convenio"></p>
+                    <p class="conven"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>CEP:</h3>
-                    <p id="cep"></p>
+                    <p class="cep"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Endereço</h3>
-                    <p id="endereco"></p>
+                    <p class="endereco"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Número da residência:</h3>
-                    <p id="numero"></p>
+                    <p class="numero"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Complemento:</h3>
-                    <p id="complemento"></p>
+                    <p class="complemento"></p>
                 </div>
-                <div class="input-box">
+                <div class="content-box">
                     <h3>Data de nascimento</h3>
-                    <p id="nasac"></p>
+                    <p class="nasc"></p>
+                </div>
+                <div class="content-box">
+                    <h3>Senha:</h3>
+                    <p class="senha"></p>
                 </div>
             </section>
             <section class="button-box">
-                <button id="editar">editar</button>
+                <a href="#titulo"><button id="editar">editar</button></a>
                 <aside>
                     <button id="sair" type="button">Sair</button>
                     <button id="excluir" type="button">excluir</button>
                 </aside>
             </section>
-            <script>
-                window.onload = async () => {
-                    const dados = sessionStorage.getItem('dadosUser')
-                    
-                    if (dados == null) {
-                        window.location.assign('https://spai.onrender.com/public/login/login.html')
-                    }
-                }
+        </main>
+        <script>
+            window.onload = async () => {
                 const dados = sessionStorage.getItem('dadosUser')
-                console.log(dados)
-                const id = dados.id
-
-
-                const editar = document.querySelector("#editar")
-                const sair = document.querySelector("#sair")
-                const excluir = document.querySelector("#excluir")
                 
-
-                sair.addEventListener('click', () => {
-                    sessionStorage.clear()
-                    document.cookie = 'userInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-
-                    window.location.assign('https://spai.onrender.com')
-                })
-
-                excluir.addEventListener('click', async () => {
-                    const head = {
-                        method: 'DELETE',
-                        headers: { 'Content-Type': 'Application/json' },
-                        body: { id: id }
-                    }
-
-                    try {
-                        const deleting = await fetch('/deleteAcc', head)
-                        const deleted = await deleting.json()
-
-                        document.querySelector("#container").innerHTML = deleted.message
-                    } catch (err) {
-                        console.log(err)
+                if (dados == null) {
+                    window.location.assign('https://spai.onrender.com/public/login/login.html')
+                }
+            }
+            const dados = sessionStorage.getItem('dadosUser')
+            console.log(dados)
+            
+            const classes = ['nome', 'nometrust', 'email', 'emailtrust', 'cell', 'celltrust', 'cpf', 'conven', 'cep', 'numero', 'complemento', 'nasc', 'senha']
+            classes.forEach(classe => {
+                nomear(classe)
+            })
+            function nomear(classe) {
+                document.querySelectorAll(`.${classe}`).forEach(elemento => {
+                    if (elemento.tagName.toLowerCase() === 'p') {
+                        elemento.textContent = dados.classe
+                    } else {
+                        elemento.value = `${classe} - nomeado`
                     }
                 })
+            }
+            /*document.querySelector(".nome").textContent = dados.nome
+            document.querySelector(".nometrust").textContent = dados.nomeTrust
+            document.querySelector(".email").textContent = dados.email
+            document.querySelector(".emailTrust").textContent = dados.emailtrust
+            document.querySelector(".cell").textContent = dados.cell
+            document.querySelector(".cellTrust").textContent = dados.celltrust
+            document.querySelector(".cpf").textContent = dados.cpf
+            document.querySelector(".convenio").textContent = dados.conven
+            document.querySelector(".cep").textContent = dados.cep
+            document.querySelector(".numero").textContent = dados.numero
+            document.querySelector(".complemento").textContent = dados.complemento
+            document.querySelector(".nasc").textContent = dados.nome.split('T')[0]
+            document.querySelector(".senha").textContent = dados.senha*/
 
-            </script>
-        </form>
+
+
+            const editar = document.querySelector("#editar")
+            const sair = document.querySelector("#sair")
+            const excluir = document.querySelector("#excluir")
+            const atualizar = document.querySelector("form")
+            const cancelar = document.querySelector("#cancelar")
+
+            editar.addEventListener('click', () => {
+                console.log('apertei')
+                document.querySelector('main').style.display = 'none'
+                document.querySelector('form').style.display = 'flex'
+            })
+
+            sair.addEventListener('click', () => {
+                sessionStorage.clear()
+                document.cookie = 'userInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+
+                window.location.assign('https://spai.onrender.com')
+            })
+
+            excluir.addEventListener('click', async () => {
+                const id = dados.id
+                const head = {
+                    method: 'DELETE'
+                }
+
+                try {
+                    const deleting = await fetch(`/deleteAcc?id=${id}`, head)
+                    const deleted = await deleting.json()
+
+                    document.querySelector("#container").innerHTML = deleted.message
+                } catch (err) {
+                    console.log(err)
+                }
+            })
+
+            cancelar.addEventListener('click', () => {
+                document.querySelector('main').style.display = 'flex'
+                document.querySelector('form').style.display = 'none'
+            })
+
+            atualizar.addEventListener('submit', async (e) => {
+                e.preventDefault()
+
+
+            })
+
+        </script>
     </div>
 </body>
 
