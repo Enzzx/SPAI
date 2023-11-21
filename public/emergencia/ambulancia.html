@@ -65,6 +65,8 @@
                     const chamando = await fetch('/chamada', head)
                     const chamada = await chamando.json()
 
+                    console.log('chamada armazenada')
+
                     window.location.assign("https://spai.onrender.com/public/emergencia/confirmacaoEmerg/confirmar-ambu.html");
                 } catch (err) {
                     if (err) throw err
@@ -72,6 +74,7 @@
                 }
             } else {
                 console.log('você não está conectado')
+                alert("conecte-se à uma conta")
             }
         }
     </script>
