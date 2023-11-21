@@ -131,10 +131,12 @@ app.post('/getAccount', async (req, res) => {
 
 app.delete('/deleteAcc', async (req, res) => {
     const id = req.query.id
-    const deleteQuery = "DELETE FROM cadastro WHERE id = $1;"
+    const deleteCall = "DELETE FROM chamadas WHERE usuario_id = $1;"
+    const deleteAcc = "DELETE FROM cadastro WHERE id = $1;"
 
     try {
-        const deleted = await pool.query(deleteQuery, [id])
+        const deletedCall = await pool.query(deleteCall, [id])
+        const deletedAcc = await pool.query(deleteAcc, [id])
 
         const response = {
             message: 'conta deletada com sucesso'
@@ -145,7 +147,7 @@ app.delete('/deleteAcc', async (req, res) => {
     }
 })
 
-app.post('/chamada', async (req, res) => {
+app.post('/calls', async (req, res) => {
     const data = req.body
     
     const usuario_id = data.id

@@ -15,9 +15,9 @@ classes.forEach(classe => {
 function nomear(classe) {
     document.querySelectorAll(`.${classe}`).forEach(elemento => {
         if (elemento.tagName.toLowerCase() === 'p') {
-            elemento.textContent = dados[classe]
+            elemento.textContent = dados[`${classe}`]
         } else {
-            elemento.value = dados[classe]
+            elemento.value = dados[`${classe}`]
         }
     })
 }

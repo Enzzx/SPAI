@@ -28,11 +28,12 @@ async function validateForm(event) {
         }
 
         try {
-            const chamando = await fetch('/chamada', head)
+            const chamando = await fetch('/calls', head)
             const chamada = await chamando.json()
 
             console.log(chamada.message)
-            call = call.slice(0, 4)
+            call = call.slice(0, 4).normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            
             window.location.assign(`https://spai.onrender.com/public/emergencia/confirmacaoEmerg/confirmar-${call}.html`);
         } catch (err) {
             if (err) throw err
