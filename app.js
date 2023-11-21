@@ -133,6 +133,7 @@ app.delete('/deleteAcc', async (req, res) => {
     const id = req.query.id
     const deleteCall = "DELETE FROM chamadas WHERE usuario_id = $1;"
     const deleteAcc = "DELETE FROM cadastro WHERE id = $1;"
+    console.log('id recebido '+ id)
 
     try {
         const deletedCall = await pool.query(deleteCall, [id])

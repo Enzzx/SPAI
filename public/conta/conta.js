@@ -5,7 +5,9 @@
         window.location.assign('https://spai.onrender.com/public/login/login.html')
     }
 }*/
-const dados = sessionStorage.getItem('dadosUser')
+let dados = sessionStorage.getItem('dadosUser')
+dados = JSON.parse(dados)
+
 console.log(dados)
 
 const classes = ['nome', 'nometrust', 'email', 'emailtrust', 'cell', 'celltrust', 'cpf', 'conven', 'cep', 'numero', 'complemento', 'nasc', 'senha']
@@ -58,6 +60,7 @@ sair.addEventListener('click', () => {
 
 excluir.addEventListener('click', async () => {
     const id = dados.id
+    console.log("começar exclusão")
     const head = {
         method: 'DELETE'
     }
@@ -66,6 +69,9 @@ excluir.addEventListener('click', async () => {
         const deleting = await fetch(`/deleteAcc?id=${id}`, head)
         const deleted = await deleting.json()
 
+        console.log('exclusão terminada')
+        //sessionStorage.clear()
+        //document.cookie = 'userInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
         document.querySelector("#container").innerHTML = deleted.message
     } catch (err) {
         console.log(err)
