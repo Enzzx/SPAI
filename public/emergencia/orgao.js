@@ -1,5 +1,6 @@
 let conectado = false
 const dados = sessionStorage.getItem('dadosUser')
+console.log(dados)
 if (dados !== null) {
     conectado = true
 }

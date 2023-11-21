@@ -1,10 +1,10 @@
-window.onload = async () => {
+/*window.onload = async () => {
     const dados = sessionStorage.getItem('dadosUser')
     
     if (dados == null) {
         window.location.assign('https://spai.onrender.com/public/login/login.html')
     }
-}
+}*/
 const dados = sessionStorage.getItem('dadosUser')
 console.log(dados)
 
