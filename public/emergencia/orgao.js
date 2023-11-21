@@ -1,5 +1,6 @@
 let conectado = false
-const dados = sessionStorage.getItem('dadosUser')
+let dados = sessionStorage.getItem('dadosUser')
+dados = JSON.parse(dados)
 console.log(dados)
 if (dados !== null) {
     conectado = true

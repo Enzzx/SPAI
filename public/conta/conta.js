@@ -1,10 +1,10 @@
-/*window.onload = async () => {
+window.onload = async () => {
     const dados = sessionStorage.getItem('dadosUser')
     
     if (dados == null) {
         window.location.assign('https://spai.onrender.com/public/login/login.html')
     }
-}*/
+}
 let dados = sessionStorage.getItem('dadosUser')
 dados = JSON.parse(dados)
 
@@ -70,8 +70,8 @@ excluir.addEventListener('click', async () => {
         const deleted = await deleting.json()
 
         console.log('exclusão terminada')
-        //sessionStorage.clear()
-        //document.cookie = 'userInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+        sessionStorage.clear()
+        document.cookie = 'userInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
         document.querySelector("#container").innerHTML = deleted.message
     } catch (err) {
         console.log(err)
