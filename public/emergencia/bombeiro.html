@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chamada de 🚒 Bombeiro</title>
     <link rel="stylesheet" type="text/css" href="./styleEmerg.css">
 </head>
+
 <body>
     <div class="container"></div>
-    
-    <h1>Chamada de 🚒 Bombeiro</h1>
-    
+
+    <h1>Chamada de 🚒 <span id="call">Bombeiro</span></h1>
+
     <form id="fireForm" method="post">
         <label for="numeroEmergencia">Número de Emergência: 193</label>
         <br>
@@ -30,21 +32,8 @@
     </form>
 
     <a href="../../index.html" id="resetForm">Voltar ao Início</a>
+    <script src="orgao.js"></script>
 
-    <script>
-        function validateForm(event) {
-            event.preventDefault();
-            // Verifica se pelo menos uma opção foi selecionada
-            var motivoSelecionado = document.querySelector('input[name="motivo"]:checked');
-            if (!motivoSelecionado) {
-                alert("Selecione um motivo antes de confirmar a chamada.");
-                return false; // Impede o envio do formulário se nenhum motivo for selecionado
-            }
-            // Se um motivo foi selecionado, redirecione para a próxima página
-            window.location.assign("https://spai.onrender.com/public/emergencia/confirmacaoEmerg/confirmar-bomb.html");
-            return false; // Isso impede o envio padrão do formulário
-        }
-    </script>
-    
 </body>
+
 </html>
