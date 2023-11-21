@@ -88,3 +88,45 @@ atualizar.addEventListener('submit', async (e) => {
 
 
 })
+
+function validarData(input) {
+    let dataAtual = new Date();
+    let dataInserida = new Date(input.value);
+
+    if (dataInserida > dataAtual) {
+        alert("Data de nascimento não pode ser no futuro.");
+        input.value = '';
+    }
+}
+
+document.getElementById('birthdate').max = new Date().toISOString().split('T')[0];
+
+function inputCPF(input) {
+    let numero = input.value.replace(/\D/g, '');
+
+    if (numero.length > 11) {
+        input.value = numero.slice(0, 11);
+    }
+}
+
+// Adiciona um ouvinte de evento para limitar enquanto digita
+let cpfInput = document.getElementById('cpf');
+cpfInput.addEventListener('input', function () {
+    inputCPF(cpfInput);
+});
+
+
+function formatarTelefone(input) {
+    let numero = input.value.replace(/\D/g, '');
+    let formatacao;
+
+    if (numero.length <= 2) {
+        formatacao = `(${numero}`;
+    } else if (numero.length <= 7) {
+        formatacao = `(${numero.slice(0, 2)}) ${numero.slice(2)}`;
+    } else {
+        formatacao = `(${numero.slice(0, 2)}) ${numero.slice(2, 7)}-${numero.slice(7, 11)}`;
+    }
+
+    input.value = formatacao;
+}
