@@ -1,0 +1,240 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+abbr {
+    color: #AB6517;
+
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #AB6517;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 800px;
+    width: 80%;
+    max-height: 90vh;
+    background: #dddddd;
+    box-shadow: #00000036 5px 5px 10px;
+}
+
+#container>section {
+    background-color: #ffeeda;
+    padding: 1em 0;
+}
+
+img {
+    display: block;
+    flex: 30%;
+    width: 5em;
+    height: 5em;
+    margin: auto;
+    border-radius: 50px;
+}
+
+main,
+form {
+    flex: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y: auto;
+}
+
+form {
+    display: none;
+}
+
+.data-box {
+    flex: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 1em 2em;
+}
+
+.content-box {
+    flex: 30%;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.9);
+}
+
+.button-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1em 3em;
+}
+
+.button-box button {
+    background-color: #AB6517;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: 0.1s ease;
+}
+
+.button-box button:hover {
+    background-color: #f9a826;
+}
+
+
+
+/* - - -  formulário  - - - */
+.question-mark {
+    cursor: pointer;
+    margin-left: 1px;
+    font-size: 1rem;
+    color: #f5b120;
+}
+
+/* Style the tooltip */
+.tooltip .info {
+    display: none;
+    position: absolute;
+    background-color: #fde3a7;
+    border: 1px solid #AB6517;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    font-size: 0.8em;
+    color: #000;
+}
+
+.info:hover {
+    display: block;
+}
+
+.tooltip>label:hover~.info {
+    display: block;
+}
+
+form {
+    padding: 1.5em 3em;
+    overflow-y: auto;
+}
+
+.form-header {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-header h1 {
+    position: relative;
+    padding-top: 1em;
+}
+
+.form-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: #AB6517;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+    gap: 5px;
+}
+
+.input-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.input-box input {
+    margin: 0.4rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+}
+
+.input-box input:hover {
+    background-color: #eeeeee75;
+}
+
+.input-box input:focus-visible {
+    background-color: #fde3a7d7;
+    outline: 1px solid;
+}
+
+.input-box input::placeholder {
+    color: #000000be;
+}
+
+.info {
+    display: none;
+    font-size: 0.8em;
+    color: #777;
+}
+
+
+form button {
+    border: none;
+    background-color: #AB6517;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.1s ease;
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+form button:hover {
+    background-color: #f9a826;
+}
+
+form>aside {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+@media screen and (max-width: 550px) {
+
+    .data-box {
+        justify-content: space-around;
+        gap: 5px;
+        padding: 2em 0em;
+    }
+
+    .content-box {
+        transform: scale(0.7);
+    }
+}

@@ -47,14 +47,13 @@
                     alert("Selecione um motivo antes de confirmar a chamada.");
                     return false;
                 }
+                const id = dados.id
+                const nome = dados.nome
+                const localizacao = dados.cep
+                const orgao = 'ambulância'
+                const motivo = motivoSelecionado.value
 
-                const data = {
-                    id: dados.id,
-                    nome: dados.nome,
-                    localizacao: dados.cep,
-                    orgao: 'ambulância',
-                    motivo: motivoSelecionado.value
-                }
+                const data = { id, nome, localizacao, orgao, motivo }
                 const head = {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
