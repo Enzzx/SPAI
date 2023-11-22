@@ -1,16 +1,16 @@
-window.onload = async () => {
+/*window.onload = async () => {
     const dados = sessionStorage.getItem('dadosUser')
-    
+
     if (dados == null) {
         window.location.assign('https://spai.onrender.com/public/login/login.html')
     }
-}
+}*/
 let dados = sessionStorage.getItem('dadosUser')
 dados = JSON.parse(dados)
 
 console.log(dados)
 
-const classes = ['nome', 'nometrust', 'email', 'emailtrust', 'cell', 'celltrust', 'cpf', 'conven', 'cep', 'numero', 'complemento', 'nasc', 'senha']
+const classes = ['nome', 'nometrust', 'email', 'emailtrust', 'cell', 'celltrust', 'cpf', 'conven', 'cep', 'numero', 'complemento', 'senha']
 classes.forEach(classe => {
     nomear(classe)
 })
@@ -23,19 +23,8 @@ function nomear(classe) {
         }
     })
 }
-/*document.querySelector(".nome").textContent = dados.nome
-document.querySelector(".nometrust").textContent = dados.nomeTrust
-document.querySelector(".email").textContent = dados.email
-document.querySelector(".emailTrust").textContent = dados.emailtrust
-document.querySelector(".cell").textContent = dados.cell
-document.querySelector(".cellTrust").textContent = dados.celltrust
-document.querySelector(".cpf").textContent = dados.cpf
-document.querySelector(".convenio").textContent = dados.conven
-document.querySelector(".cep").textContent = dados.cep
-document.querySelector(".numero").textContent = dados.numero
-document.querySelector(".complemento").textContent = dados.complemento
+document.querySelector("#birthdate").value = dados.nasc.split('T')[0]
 document.querySelector(".nasc").textContent = dados.nome.split('T')[0]
-document.querySelector(".senha").textContent = dados.senha*/
 
 
 
@@ -72,7 +61,8 @@ excluir.addEventListener('click', async () => {
         console.log('exclusão terminada')
         sessionStorage.clear()
         document.cookie = 'userInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-        document.querySelector("#container").innerHTML = deleted.message
+        alert(deleted.message)
+        window.location.assign("https://spai.onrender.com")
     } catch (err) {
         console.log(err)
     }
@@ -85,8 +75,40 @@ cancelar.addEventListener('click', () => {
 
 atualizar.addEventListener('submit', async (e) => {
     e.preventDefault()
+    
+    const id = dados.id
+    const nome = document.querySelector("#nome").value
+    const nomeTrust = document.querySelector("#nameTrusted").value
+    const email = document.querySelector("#email").value
+    const emailTrust = document.querySelector("#emailTrusted").value
+    const cell = document.querySelector("#number").value
+    const cellTrust = document.querySelector("#trustedCell").textContent = dados.celltrust
+    const cpf = document.querySelector("#cpf").value
+    const convenio = document.querySelector("#healthcare").value
+    const cep = document.querySelector("#zipCode").value
+    const numero = document.querySelector("#houseNumber").value
+    const complemento = document.querySelector("#complement").value
+    const nasc = document.querySelector("#birthdate").value
+    const senha = document.querySelector("#password").value
 
+    const data = { id, nome, nomeTrust, email, emailTrust, cell, cellTrust, cpf, convenio, cep, numero, complemento, nasc, senha }
+    const head = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'Application/json' },
+        body: JSON.stringify(data)
+    }
 
+    try {
+        const editing = await fetch('/updateData', head)
+        const edited = await editing.json()
+
+        console.log(edited.message)
+
+        sessionStorage.clear()
+        window.location.assign('https://spai.onrender.com/public/login/login.html')
+    } catch (err) {
+        console.error(err)
+    }
 })
 
 function validarData(input) {

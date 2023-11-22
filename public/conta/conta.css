@@ -20,6 +20,7 @@ body {
 }
 
 #container {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,6 +34,12 @@ body {
 #container>section {
     background-color: #ffeeda;
     padding: 1em 0;
+}
+
+#container > a {
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
 img {
@@ -161,7 +168,7 @@ form {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem 0;
-    gap: 5px;
+    gap: 15px;
 }
 
 .input-box {

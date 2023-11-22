@@ -60,7 +60,7 @@ app.post('/register', async (req, res) => {
             created: true
         }
 
-        res.status(200).json(response)
+        res.status(201).json(response)
     } catch (err) {
         console.error(err)
         res.status(500).json({ message: 'Erro interno do servidor' })
@@ -85,7 +85,7 @@ app.post('/logIn', async (req, res) => {
                 message: 'senha ou email incorretos',
                 log: false
             }
-            return res.status(401).json(response)
+            return res.status(400).json(response)
         }
         const id = hasId.rows[0].id
         const nome = hasId.rows[0].nome
@@ -107,7 +107,7 @@ app.post('/getAccount', async (req, res) => {
     const tokenHeader = req.headers['authorization'];
 
     if (!tokenHeader) {
-        return res.status(401).json({ message: 'Token não fornecido' });
+        return res.status(404).json({ message: 'Token não fornecido' });
     }
 
     const token = tokenHeader.split(' ')[1];
@@ -125,15 +125,39 @@ app.post('/getAccount', async (req, res) => {
     } catch (err) {
         console.log(err)
     }
+})
 
+app.put('/updateData', async (req, res) => {
+    const data = req.body
+    const id = data.id
+    const name = data.nome
+    const nameTrusted = data.nomeTrust
+    const birthDate = data.nasc
+    const email = data.email
+    const emailTrusted = data.emailTrust
+    const cell = data.cell
+    const cellTrusted = data.cellTrust
+    const cpf = data.cpf
+    const healthCare = data.convenio
+    const cep = data.cep
+    const houseNumber = data.numero
+    const complement = data.complemento
+    const password = data.sena
+    const updateQuery = 'UPDATE cadastro SET nome = $1, nometrust = $2, email = $3, emailtrust = $4, cell = $5, celltrust = $6, cpf = $7, conven = $8, cep = $9, numero = $10, complemento = $11, senha = $12, nasc = $13 WHERE id = $14;'
 
+    try {
+        const update = await pool.query(updateQuery, [name, nameTrusted, email, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, birthDate, id])
+
+        res.status(200).json({ message: 'atualização realizada com sucesso' })
+    } catch (err) {
+        console.log(err)
+    }
 })
 
 app.delete('/deleteAcc', async (req, res) => {
     const id = req.query.id
     const deleteCall = "DELETE FROM chamadas WHERE usuario_id = $1;"
     const deleteAcc = "DELETE FROM cadastro WHERE id = $1;"
-    console.log('id recebido '+ id)
 
     try {
         const deletedCall = await pool.query(deleteCall, [id])
@@ -161,7 +185,7 @@ app.post('/calls', async (req, res) => {
     try {
         const store = await pool.query(query, [usuario_id, nome, localizacao, orgao, motivo])
 
-        res.status(200).json({ message: 'chamada armazenada' })
+        res.status(201).json({ message: 'chamada armazenada' })
     } catch (err) {
         console.log(err)
     }
