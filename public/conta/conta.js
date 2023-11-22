@@ -1,10 +1,10 @@
-/*window.onload = async () => {
+window.onload = async () => {
     const dados = sessionStorage.getItem('dadosUser')
 
     if (dados == null) {
         window.location.assign('https://spai.onrender.com/public/login/login.html')
     }
-}*/
+}
 let dados = sessionStorage.getItem('dadosUser')
 dados = JSON.parse(dados)
 
@@ -77,7 +77,7 @@ atualizar.addEventListener('submit', async (e) => {
     e.preventDefault()
     
     const id = dados.id
-    const nome = document.querySelector("#nome").value
+    const nome = document.querySelector("#name").value
     const nomeTrust = document.querySelector("#nameTrusted").value
     const email = document.querySelector("#email").value
     const emailTrust = document.querySelector("#emailTrusted").value
