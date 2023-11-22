@@ -142,7 +142,7 @@ app.put('/updateData', async (req, res) => {
     const cep = data.cep
     const houseNumber = data.numero
     const complement = data.complemento
-    const password = data.sena
+    const password = data.senha
     const updateQuery = 'UPDATE cadastro SET nome = $1, nometrust = $2, email = $3, emailtrust = $4, cell = $5, celltrust = $6, cpf = $7, conven = $8, cep = $9, numero = $10, complemento = $11, senha = $12, nasc = $13 WHERE id = $14;'
 
     try {
