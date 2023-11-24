@@ -24,7 +24,7 @@ function nomear(classe) {
     })
 }
 document.querySelector("#birthdate").value = dados.nasc.split('T')[0]
-document.querySelector(".nasc").textContent = dados.nome.split('T')[0]
+document.querySelector(".nasc").textContent = dados.nasc.split('T')[0]
 
 
 
