@@ -10,7 +10,7 @@ dados = JSON.parse(dados)
 
 console.log(dados)
 
-const classes = ['nome', 'nometrust', 'email', 'emailtrust', 'cell', 'celltrust', 'cpf', 'conven', 'cep', 'numero', 'complemento', 'senha']
+const classes = ['nome', 'nometrust', 'email', 'emailtrust', 'cell', 'celltrust', 'cpf', 'conven', 'cep', 'numero', 'complemento']
 classes.forEach(classe => {
     nomear(classe)
 })
@@ -89,9 +89,8 @@ atualizar.addEventListener('submit', async (e) => {
     const numero = document.querySelector("#houseNumber").value
     const complemento = document.querySelector("#complement").value
     const nasc = document.querySelector("#birthdate").value
-    const senha = document.querySelector("#password").value
 
-    const data = { id, nome, nomeTrust, email, emailTrust, cell, cellTrust, cpf, convenio, cep, numero, complemento, nasc, senha }
+    const data = { id, nome, nomeTrust, email, emailTrust, cell, cellTrust, cpf, convenio, cep, numero, complemento, nasc }
     const head = {
         method: 'PUT',
         headers: { 'Content-Type': 'Application/json' },

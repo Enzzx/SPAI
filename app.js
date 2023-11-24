@@ -142,11 +142,10 @@ app.put('/updateData', async (req, res) => {
     const cep = data.cep
     const houseNumber = data.numero
     const complement = data.complemento
-    const password = data.senha
-    const updateQuery = 'UPDATE cadastro SET nome = $1, nometrust = $2, email = $3, emailtrust = $4, cell = $5, celltrust = $6, cpf = $7, conven = $8, cep = $9, numero = $10, complemento = $11, senha = $12, nasc = $13 WHERE id = $14;'
+    const updateQuery = 'UPDATE cadastro SET nome = $1, nometrust = $2, email = $3, emailtrust = $4, cell = $5, celltrust = $6, cpf = $7, conven = $8, cep = $9, numero = $10, complemento = $11, nasc = $12 WHERE id = $13;'
 
     try {
-        const update = await pool.query(updateQuery, [name, nameTrusted, email, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, password, birthDate, id])
+        const update = await pool.query(updateQuery, [name, nameTrusted, email, emailTrusted, cell, cellTrusted, cpf, healthCare, cep, houseNumber, complement, birthDate, id])
 
         res.status(200).json({ message: 'atualização realizada com sucesso' })
     } catch (err) {
