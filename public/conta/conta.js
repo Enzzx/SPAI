@@ -104,7 +104,7 @@ atualizar.addEventListener('submit', async (e) => {
         console.log(edited.message)
 
         sessionStorage.clear()
-        window.location.assign('https://spai.onrender.com/public/login/login.html')
+        window.location.assign('https://spai.onrender.com')
     } catch (err) {
         console.error(err)
     }
